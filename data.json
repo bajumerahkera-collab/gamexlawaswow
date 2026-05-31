@@ -6,11 +6,11 @@
     { "name": "Spadegaming", "img": "https://img.viva88athenae.com/sg-w.png" }
   ],
   "pool_slots": [
-    { "name": "Mahjong Ways 2", "provider": "PG Soft", "img": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=400" },
-    { "name": "Gates Of Olympus 1000", "provider": "Pragmatic Play", "img": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=400" },
+    { "name": "Mahjong Ways 2", "provider": "PG Soft", "img": "https://img.viva88athenae.com/pg/images/mahjong-ways2.png" },
+    { "name": "Gates Of Olympus 1000", "provider": "Pragmatic Play", "img": "https://img.viva88athenae.com/pp/images/vs20olympx.png" },
     { "name": "Sweet Bonanza", "provider": "Pragmatic Play", "img": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=400" },
-    { "name": "Starlight Princess", "provider": "Pragmatic Play", "img": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400" },
-    { "name": "Fortune Rabbit", "provider": "PG Soft", "img": "https://images.unsplash.com/photo-1570158268183-d296b2892211?w=400" },
-    { "name": "Koi Gate", "provider": "Habanero", "img": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400" }
+    { "name": "Starlight Princess", "provider": "Pragmatic Play", "img": "https://img.viva88athenae.com/pp/images/vs20starlight.png" },
+    { "name": "Fortune Rabbit", "provider": "PG Soft", "img": "httpshttps://img.viva88athenae.com/pg/images/fortune-rabbit.png" },
+    { "name": "Koi Gate", "provider": "Habanero", "img": "https://img.viva88athenae.com/hb/images/circle/SGTheKoiGate.png" }
   ]
 }
