@@ -3,145 +3,69 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>LAWASTOTO: Update Kemenangan Setiap Hari</title>
-    
-    <!-- Fonts & CSS Frameworks -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;600;700;900&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/splidejs/4.1.4/css/splide.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
+    <title>LAWASTOTO - Live RTP & Bukti JP</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" rel="stylesheet">
     <link href="style.css" rel="stylesheet">
 </head>
 <body>
 
-    <!-- Header Navbar -->
-    <header class="fixed-top">
-        <nav class="navbar navbar-expand-lg navbar-dark">
-            <div class="container">
-                <a class="brand-logo" href="#" onclick="switchPage('home')">
-                    <i class="ri-flashlight-fill"></i> LAWASTOTO
-                </a>
-                <div class="d-flex align-items-center">
-                    <div class="d-flex d-lg-none gap-1">
-                        <a class="btn btn-sm btn-glow-outline" href="https://shorturl.at/YSBTy">Main</a>
-                        <a class="btn btn-sm btn-glow-primary" href="https://shorturl.at/YSBTy">Daftar</a>
-                    </div>
-                </div>
+    <!-- HEADER & SLIDER BANNER -->
+    <header class="container pt-3">
+        <div id="mainSlide" class="splide mb-3 rounded-3 overflow-hidden">
+            <div class="splide__track">
+                <ul class="splide__list">
+                    <li class="splide__slide"><img src="https://images.unsplash.com/photo-1614850523459-c2f4c699c52e?w=800" alt="Banner 1"></li>
+                    <li class="splide__slide"><img src="https://images.unsplash.com/photo-1557672172-298e090bd0f1?w=800" alt="Banner 2"></li>
+                </ul>
             </div>
-        </nav>
+        </div>
     </header>
 
-    <!-- CONTAINER UTAMA -->
-    <main class="container shadow mt-3">
-        
-        <!-- HALAMAN HOME -->
-        <div id="page-home" class="page-content">
-            <!-- Banner Slider -->
-            <div class="splide mb-4" id="mainSlide">
-                <div class="splide__track">
-                    <ul class="splide__list">
-                        <li class="splide__slide">
-                            <a href="https://shorturl.at/YSBTy" target="_blank">
-                                <img src="https://img.viva88athenae.com/events/pp-ramadhan-26.jpg" class="d-block w-100 rounded" style="max-height: 280px; object-fit: cover;" alt="Promo 1">
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+    <!-- PAGE 1: HOME (RTP & JACKPOT LIST) -->
+    <main id="page-home" class="page-content container pb-5 mb-5">
+        <!-- Live Jackpot Terkini -->
+        <h5 class="fw-bold text-white mb-3">🔥 LIVE WINNER JACKPOT</h5>
+        <div id="render-jackpots" class="mb-4"></div>
 
-            <!-- Slider Providers -->
-            <div class="mb-4">
-                <div class="section-title">PROVIDERS</div>
-                <div class="provider-container">
-                    <div class="splide" id="providerSlide">
-                        <div class="splide__track">
-                            <ul class="splide__list" id="render-providers">
-                                <!-- Diisi otomatis via JS -->
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Jackpot Terakhir -->
-            <div class="mb-4">
-                <div class="section-title">5 Jackpot Terakhir</div>
-                <div class="content-box" id="render-jackpots">
-                    <!-- Diisi otomatis via JS -->
-                </div>
-            </div>
-
-            <!-- Rekomendasi Slot -->
-            <div class="mb-4">
-                <div class="section-title">REKOMENDASI SLOT</div>
-                <div class="row g-2" id="render-slots">
-                    <!-- Diisi otomatis via JS -->
-                </div>
-            </div>
-
-            <!-- Tips Bermain -->
-            <div class="content-box mb-4">
-                <article>
-                    <h2 class="h5 text-white fw-bold mb-3">Tips Memanfaatkan Bocoran RTP untuk Meningkatkan Peluang Menang</h2>
-                    <p style="font-size: 0.85rem; color: #94a3b8;">Mengetahui RTP game terbaru saja tidak cukup; Anda juga perlu strategi untuk memanfaatkannya.</p>
-                    <ol class="ps-3 text-start" style="font-size: 0.85rem; color: #cbd5e1;">
-                        <li class="mb-2"><strong>Pilih Game dengan RTP Tinggi:</strong> Menawarkan peluang menang jangka panjang lebih besar.</li>
-                        <li class="mb-2"><strong>Manfaatkan Bonus dan Promosi:</strong> Menambah modal bermain secara efektif.</li>
-                    </ol>
-                </article>
+        <!-- Slider Provider -->
+        <h5 class="fw-bold text-white mb-3">🎮 PROVIDER PILIHAN</h5>
+        <div id="providerSlide" class="splide mb-4">
+            <div class="splide__track">
+                <ul class="splide__list" id="render-providers"></ul>
             </div>
         </div>
 
-        <!-- HALAMAN BUKTI JP (image_0335db.jpg) -->
-        <div id="page-buktijp" class="page-content d-none">
-            <div class="content-box mb-4">
-                <h1 class="h4 text-white fw-bold d-flex align-items-center gap-2 mb-3">
-                    <i class="ri-heart-pulse-fill text-danger"></i> Bukti Jackpot
-                </h1>
-                <p style="font-size: 0.85rem; color: #94a3b8;">
-                    Halaman ini menampilkan Foto Jackpot dan Bukti Transfer yang berhasil diraih oleh member LAWASTOTO hari ini sebagai bentuk transparansi aktivitas permainan.
-                </p>
-                
-                <!-- Search & Filter Bar -->
-                <div class="search-box mb-4">
-                    <input type="text" id="searchJp" class="form-control mb-2" placeholder="Search bukti jp...">
-                    <div class="d-flex gap-2">
-                        <button class="btn w-50 btn-glow-outline"><i class="ri-filter-3-line"></i> Filter</button>
-                        <button class="btn w-50 btn-glow-primary"><i class="ri-search-line"></i> Search</button>
-                    </div>
-                </div>
-
-                <!-- Container List Foto Bukti Kemenangan -->
-                <div class="row g-3" id="render-bukti-gallery">
-                    <!-- Diisi otomatis via JS -->
-                </div>
-            </div>
-        </div>
-
+        <!-- List Grid Slot RTP -->
+        <h5 class="fw-bold text-white mb-3">🎰 REKOMENDASI SLOT GACOR HARI INI</h5>
+        <div class="row g-2" id="render-slots"></div>
     </main>
 
-    <!-- Floating Live Chat -->
-    <a href="https://shorturl.at/YSBTy" target="_blank" class="floating-support"><i class="ri-customer-service-2-fill"></i></a>
+    <!-- PAGE 2: BUKTI JP GALLERY (LIVE FIREBASE) -->
+    <main id="page-buktijp" class="page-content container pb-5 mb-5 d-none">
+        <h4 class="fw-bold text-white mb-1">📢 LIVE FEED BUKTI JP MEMBER</h4>
+        <p class="text-white-50 small mb-4">Bukti transfer kemenangan real-time lunas dibayar tanpa tunda.</p>
+        <div class="row g-3" id="render-bukti-gallery"></div>
+    </main>
 
-    <!-- Sticky Bottom Nav -->
-    <div class="bottom-nav">
-        <a href="#" class="bottom-nav-item active" id="nav-home" onclick="switchPage('home')">
-            <i class="ri-home-4-line"></i><span>HOME</span>
-        </a>
-        <a href="#" class="bottom-nav-item" id="nav-buktijp" onclick="switchPage('buktijp')">
-            <i class="ri-money-dollar-circle-line"></i><span>BUKTI JP</span>
-        </a>
-        <a href="#" class="bottom-nav-item">
-            <i class="ri-trophy-line"></i><span>EVENT</span>
-        </a>
-        <a href="https://shorturl.at/YSBTy" target="_blank" class="bottom-nav-item">
-            <i class="ri-play-circle-line"></i><span>MAIN</span>
-        </a>
-    </div>
+    <!-- NAVIGATION BAWAH (MOBILE APP STYLE) -->
+    <nav class="bottom-nav">
+        <div class="bottom-nav-item active" id="nav-home" onclick="switchPage('home')">
+            <span>🏠</span><div class="nav-text">Home</div>
+        </div>
+        <div class="bottom-nav-item" id="nav-buktijp" onclick="switchPage('buktijp')">
+            <span>💰</span><div class="nav-text">Bukti JP</div>
+        </div>
+    </nav>
 
-    <!-- Scripts JavaScript External -->
+    <!-- CORE SCRIPTS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+    
+    <!-- Firebase Terintegrasi (V8 Standar) -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+    
     <script src="script.js"></script>
 </body>
 </html>
