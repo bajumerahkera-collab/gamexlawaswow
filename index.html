@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LAWASTOTO - Bocoran RTP Terbaru & Pola Slot</title>
-    <!-- Tailwind CSS untuk framework design -->
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="style.css">
+    <!-- Tambahan Swiper CSS untuk slideshow banner & provider jika dibutuhkan, namun kita pakai native Tailwind slider yang smooth -->
 </head>
 <body class="bg-[#121212] text-white">
 
@@ -21,65 +22,67 @@
         </div>
     </header>
 
-    <!-- SLIDESHOW BANNER -->
-    <section class="p-4">
-        <div class="w-full h-40 bg-gradient-to-r from-blue-900 to-black rounded-xl flex items-center justify-center border border-blue-500/30">
-            <p class="text-xs md:text-sm font-semibold tracking-widest text-blue-400 text-center px-4">PROSES INSTAN HANYA 1 DETIK DENGAN QRIS - LAWASTOTO</p>
-        </div>
-    </section>
-
-    <!-- PROVIDER SLIDER -->
-    <section class="p-4">
-        <h2 class="text-sm font-bold tracking-wider mb-3 text-gray-400">PROVIDERS</h2>
-        <div class="flex space-x-3 overflow-x-auto pb-2 scrollbar-hide">
-            <div class="min-w-[110px] bg-[#1e1e1e] p-3 rounded-xl border-2 neon-border text-center"><span class="text-xs font-bold text-blue-400">PG SOFT</span></div>
-            <div class="min-w-[110px] bg-[#1e1e1e] p-3 rounded-xl border border-gray-800 text-center"><span class="text-xs font-bold text-gray-400">PRAGMATIC</span></div>
-            <div class="min-w-[110px] bg-[#1e1e1e] p-3 rounded-xl border border-gray-800 text-center"><span class="text-xs font-bold text-gray-400">HABANERO</span></div>
-            <div class="min-w-[110px] bg-[#1e1e1e] p-3 rounded-xl border border-gray-800 text-center"><span class="text-xs font-bold text-gray-400">MICROGAMING</span></div>
-             <div class="min-w-[110px] bg-[#1e1e1e] p-3 rounded-xl border border-gray-800 text-center"><span class="text-xs font-bold text-gray-400">SPADEGAMING</span></div>
-             <div class="min-w-[110px] bg-[#1e1e1e] p-3 rounded-xl border border-gray-800 text-center"><span class="text-xs font-bold text-gray-400">NOLIMIT</span></div>
-             <div class="min-w-[110px] bg-[#1e1e1e] p-3 rounded-xl border border-gray-800 text-center"><span class="text-xs font-bold text-gray-400">FASTSPIN</span></div>
-             <div class="min-w-[110px] bg-[#1e1e1e] p-3 rounded-xl border border-gray-800 text-center"><span class="text-xs font-bold text-gray-400">JOKER</span></div>
-             <div class="min-w-[110px] bg-[#1e1e1e] p-3 rounded-xl border border-gray-800 text-center"><span class="text-xs font-bold text-gray-400">5G GAMES</span></div>
-             <div class="min-w-[110px] bg-[#1e1e1e] p-3 rounded-xl border border-gray-800 text-center"><span class="text-xs font-bold text-gray-400">HACKSAW</span></div>
-             <div class="min-w-[110px] bg-[#1e1e1e] p-3 rounded-xl border border-gray-800 text-center"><span class="text-xs font-bold text-gray-400">NEXTSPIN</span></div>
-             <div class="min-w-[110px] bg-[#1e1e1e] p-3 rounded-xl border border-gray-800 text-center"><span class="text-xs font-bold text-gray-400">PLAYSTAR</span></div>
-             <div class="min-w-[110px] bg-[#1e1e1e] p-3 rounded-xl border border-gray-800 text-center"><span class="text-xs font-bold text-gray-400">PLAYTECH</span></div>
-             <div class="min-w-[110px] bg-[#1e1e1e] p-3 rounded-xl border border-gray-800 text-center"><span class="text-xs font-bold text-gray-400">ADVANT</span></div>
-             <div class="min-w-[110px] bg-[#1e1e1e] p-3 rounded-xl border border-gray-800 text-center"><span class="text-xs font-bold text-gray-400">COSMO</span></div>
-             <div class="min-w-[110px] bg-[#1e1e1e] p-3 rounded-xl border border-gray-800 text-center"><span class="text-xs font-bold text-gray-400">CQ9</span></div>
-             <div class="min-w-[110px] bg-[#1e1e1e] p-3 rounded-xl border border-gray-800 text-center"><span class="text-xs font-bold text-gray-400">WOW GAMING</span></div>
-            <div class="min-w-[110px] bg-[#1e1e1e] p-3 rounded-xl border border-gray-800 text-center"><span class="text-xs font-bold text-gray-400">LIVE22</span></div>
-            <div class="min-w-[110px] bg-[#1e1e1e] p-3 rounded-xl border border-gray-800 text-center"><span class="text-xs font-bold text-gray-400">SBO SLOT</span></div>
+   <!-- 1. BANNER SLIDESHOW DENGAN FOTO -->
+    <section class="p-4 relative overflow-hidden">
+        <div id="banner-slider" class="w-full aspect-[21/9] md:aspect-[3/1] rounded-xl relative overflow-hidden border border-blue-500/30 bg-[#161616]">
+            <!-- Slide 1 -->
+            <img src="https://img.viva88athenae.com/events/pp-ramadhan-26.jpg" class="slide absolute inset-0 w-full h-full object-cover opacity-100 transition-opacity duration-1000">
             
+            <!-- Slide 2 -->
+            <img src="https://img.viva88athenae.com/events/pp-candy-rush-june-26.jpg" class="slide absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000">
+            
+            <!-- Slide 3 (Tambahkan kalau ada banner ketiga) -->
+            <img src="https://img.viva88athenae.com/events/mega-gacor-l3-2026.jpg" class="slide absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000">
         </div>
     </section>
 
-    <!-- 10 JACKPOT TERAKHIR -->
+    <!-- 2. PROVIDER SLIDER (BISA DI-SLIDE) -->
+    <section class="p-4 relative">
+        <h2 class="text-xs font-bold tracking-wider mb-3 text-gray-400">OFFICIAL PROVIDERS</h2>
+        <div class="relative w-full flex items-center">
+            <!-- Container Slide -->
+            <div id="provider-container" class="flex space-x-3 overflow-x-auto pb-2 scroll-smooth scrollbar-hide w-full">
+                <div class="min-w-[120px] bg-[#1e1e1e] p-3 rounded-xl border-2 neon-border text-center font-bold text-xs text-blue-400">PRAGMATIC PLAY</div>
+                <div class="min-w-[120px] bg-[#1e1e1e] p-3 rounded-xl border border-gray-800 text-center font-bold text-xs text-gray-500">PG SOFT</div>
+                <div class="min-w-[120px] bg-[#1e1e1e] p-3 rounded-xl border border-gray-800 text-center font-bold text-xs text-gray-500">HABANERO</div>
+                <div class="min-w-[120px] bg-[#1e1e1e] p-3 rounded-xl border border-gray-800 text-center font-bold text-xs text-gray-500">JOKER GAMING</div>
+                <div class="min-w-[120px] bg-[#1e1e1e] p-3 rounded-xl border border-gray-800 text-center font-bold text-xs text-gray-500">MICROGAMING</div>
+                <div class="min-w-[120px] bg-[#1e1e1e] p-3 rounded-xl border border-gray-800 text-center font-bold text-xs text-gray-500">SPADEGAMING</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. 10 JACKPOT TERAKHIR LIVE + GAMBAR GAME -->
     <section class="p-4 bg-[#161616] mx-4 rounded-xl border border-gray-800">
         <div class="flex items-center space-x-2 mb-4">
-            <span class="text-blue-400">🎰</span>
-            <h2 class="text-sm font-bold">10 Jackpot Terakhir Live</h2>
+            <span class="text-blue-400 text-lg">👑</span>
+            <h2 class="text-xs font-bold uppercase tracking-wider">10 Jackpot Terakhir Live</h2>
         </div>
-        <div id="jackpot-container" class="space-y-3">
-            <!-- Data di-load melalui script.js -->
+        <div id="jackpot-container" class="space-y-2 max-h-[350px] overflow-y-auto pr-1">
+            <!-- Data di-load melalui script.js lengkap dengan foto mini game -->
         </div>
     </section>
 
-    <!-- GAME GRID & RTP -->
-    <section class="p-4 grid grid-cols-2 gap-4 mb-20" id="game-container">
+    <!-- Search & Filter Bar -->
+    <section class="p-4 flex gap-2">
+        <input type="text" placeholder="Cari game..." class="w-full bg-[#1e1e1e] border border-gray-800 rounded-lg px-3 py-2 text-xs focus:outline-none focus:border-blue-500 text-white">
+        <button class="bg-[#1e1e1e] border border-blue-500/30 text-blue-400 px-4 py-2 rounded-lg text-xs font-bold">Cari</button>
+    </section>
+
+    <!-- 4. GAME GRID & RTP (FIX GAMBAR TERPOTONG & CENTER RTP) -->
+    <section class="p-4 grid grid-cols-2 gap-4 mb-24" id="game-container">
         <!-- Data di-load melalui script.js -->
     </section>
 
-    <!-- FOOTER NAVIGATION -->
-    <div class="fixed bottom-0 left-0 right-0 bg-[#161616]/95 border-t border-gray-800 p-2 flex justify-around text-center z-50">
-        <div class="text-blue-400 text-xs flex flex-col items-center"><span>🏠</span><span class="text-[9px] font-bold mt-1">HOME</span></div>
-        <div class="text-gray-500 text-xs flex flex-col items-center"><span>🎟️</span><span class="text-[9px] font-bold mt-1">BUKTI JP</span></div>
-        <div class="text-gray-500 text-xs flex flex-col items-center"><span>🏆</span><span class="text-[9px] font-bold mt-1">EVENT</span></div>
-        <div class="text-gray-500 text-xs flex flex-col items-center"><span>▶️</span><span class="text-[9px] font-bold mt-1">MAIN</span></div>
+    <!-- FOOTER NAVIGATION BAR -->
+    <div class="fixed bottom-0 left-0 right-0 bg-[#161616]/95 border-t border-gray-800 p-2 flex justify-around text-center z-50 backdrop-blur-sm">
+        <div class="text-blue-400 text-xs flex flex-col items-center cursor-pointer"><span>🏠</span><span class="text-[9px] font-bold mt-1">HOME</span></div>
+        <div class="text-gray-500 text-xs flex flex-col items-center cursor-pointer"><span>🎟️</span><span class="text-[9px] font-bold mt-1">BUKTI JP</span></div>
+        <div class="text-gray-500 text-xs flex flex-col items-center cursor-pointer"><span>🏆</span><span class="text-[9px] font-bold mt-1">EVENT</span></div>
+        <div class="text-gray-500 text-xs flex flex-col items-center cursor-pointer"><span>▶️</span><span class="text-[9px] font-bold mt-1">MAIN</span></div>
     </div>
 
-    <!-- Panggil File Script Eksternal -->
+    <!-- Panggil File Script -->
     <script src="script.js"></script>
 </body>
 </html>
