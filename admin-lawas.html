@@ -3,40 +3,31 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Dashboard Admin Posting - LAWASTOTO</title>
+    <title>Bukti Kemenangan / JP Member - LAWASTOTO</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body { background-color: #0b0f19; color: #cbd5e1; padding: 30px 10px; }
-        .admin-box { background: #111827; border: 1px solid #1e293b; border-radius: 12px; padding: 20px; max-width: 500px; margin: auto; }
-        .form-control { background-color: #0f172a; border-color: #1e293b; color: #fff; }
-        .form-control:focus { background-color: #0f172a; color: #fff; border-color: #00f0ff; box-shadow: none; }
-        .btn-post { background-color: #00f0ff; color: #000; font-weight: 700; border: none; }
+        .jp-card { background: #111827; border: 1px solid #1e293b; border-radius: 12px; overflow: hidden; margin-bottom: 20px; }
+        .jp-title { color: #fff; font-weight: 600; font-size: 1.1rem; }
+        .jp-date { color: #00f0ff; font-size: 0.85rem; }
     </style>
 </head>
 <body>
 
-    <div class="admin-box shadow">
-        <h2 class="text-center text-white fw-bold mb-4">📢 POSTING BUKTI JP</h2>
+    <div class="container" style="max-width: 800px;">
+        <h2 class="text-center text-white fw-bold mb-4">🏆 BUKTI KEMENANGAN MEMBER LAWASTOTO 🏆</h2>
+        <hr class="border-secondary mb-4">
         
-        <div class="mb-3">
-            <label class="form-label text-white-50">Judul / Keterangan Kemenangan</label>
-            <input type="text" id="postTitle" class="form-control" placeholder="Contoh: Kemenangan Mahjong Ways Member SA****97">
+        <div id="feedBuktiJp" class="row">
+            <div class="text-center text-white-50 col-12">⏳ Memuat bukti kemenangan terbaru...</div>
         </div>
-        
-        <div class="mb-3">
-            <label class="form-label text-white-50">Pilih Foto Bukti Transfer (Screenshot)</label>
-            <input type="file" id="postImage" class="form-control" accept="image/*">
-        </div>
-
-        <button class="btn btn-post w-100 py-2" id="btnSubmit" onclick="uploadDanPublish()">🚀 PUBLISH SEKARANG</button>
-        <div id="statusNotification" class="text-center mt-3 small"></div>
     </div>
 
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
 
     <script>
-        // KONTROL KONFIGURASI FIREBASE (Ganti dengan akun Firebase milikmu sendiri)
+        // SAmakan Konfigurasi Firebase ini dengan yang ada di script Admin
         const firebaseConfig = {
             apiKey: "PASTE_API_KEY_FIREBASE_KAMU_DISINI",
             authDomain: "proyek-kamu.firebaseapp.com",
@@ -49,69 +40,42 @@
         firebase.initializeApp(firebaseConfig);
         const database = firebase.database();
 
-        // API KEY IMGBB (Ganti dengan API Key ImgBB milikmu sendiri)
-        const IMGBB_API_KEY = "PASTE_API_KEY_IMGBB_KAMU_DISINI";
+        // Mengambil data dari node 'bukti_jp'
+        const feedContainer = document.getElementById('feedBuktiJp');
 
-        async function uploadDanPublish() {
-            const titleInput = document.getElementById('postTitle').value;
-            const fileInput = document.getElementById('postImage').files[0];
-            const statusDiv = document.getElementById('statusNotification');
-            const btn = document.getElementById('btnSubmit');
+        database.ref('bukti_jp').on('value', (snapshot) => {
+            feedContainer.innerHTML = ""; // Bersihkan loading
+            
+            if (snapshot.exists()) {
+                const data = snapshot.val();
+                
+                // Balik urutan data agar yang terbaru muncul di paling atas
+                const keys = Object.keys(data).reverse(); 
 
-            if (!titleInput || !fileInput) {
-                alert("Wajib isi judul dan pilih foto terlebih dahulu, bos!");
-                return;
-            }
-
-            // Kunci tombol saat proses loading berjalan
-            btn.disabled = true;
-            statusDiv.className = "text-warning mt-3 small";
-            statusDiv.innerText = "⏳ Sedang mengupload gambar ke server...";
-
-            try {
-                // 1. PROSES UPLOAD GAMBAR KE IMGBB VIA API
-                let formData = new FormData();
-                formData.append("image", fileInput);
-
-                const response = await fetch(`https://api.imgbb.com/1/upload?key=${IMGBB_API_KEY}`, {
-                    method: "POST",
-                    body: formData
+                keys.forEach((key) => {
+                    const item = data[key];
+                    
+                    // Struktur HTML untuk tiap list card bukti JP
+                    const cardHtml = `
+                        <div class="col-md-6">
+                            <div class="jp-card shadow-sm">
+                                <img src="${item.img}" class="img-fluid w-100" alt="Bukti JP" style="max-height: 300px; object-fit: cover;">
+                                <div class="p-3">
+                                    <div class="jp-title mb-1">${item.title}</div>
+                                    <div class="jp-date">📅 Tanggal: ${item.date}</div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    feedContainer.innerHTML += cardHtml;
                 });
-                const result = await response.json();
-
-                if (!result.success) {
-                    throw new Error("Gagal mengupload gambar ke ImgBB.");
-                }
-
-                const urlGambarAsli = result.data.url;
-
-                // 2. PROSES SIMPAN DATA TEKS & LINK KE FIREBASE
-                statusDiv.innerText = "💾 Memasukkan data ke feed bukti JP...";
-                
-                const hariIni = new Date().toISOString().split('T')[0];
-                
-                // Push data baru ke dalam node 'bukti_jp' di database firebase
-                await database.ref('bukti_jp').push({
-                    title: titleInput,
-                    img: urlGambarAsli,
-                    date: hariIni
-                });
-
-                statusDiv.className = "text-success mt-3 small";
-                statusDiv.innerText = "✅ SUKSES! Bukti JP sudah terbit di halaman depan.";
-                
-                // Reset Form input
-                document.getElementById('postTitle').value = "";
-                document.getElementById('postImage').value = "";
-
-            } catch (error) {
-                console.error(error);
-                statusDiv.className = "text-danger mt-3 small";
-                statusDiv.innerText = "❌ Terjadi kesalahan sistem: " + error.message;
-            } finally {
-                btn.disabled = false;
+            } else {
+                feedContainer.innerHTML = `<div class="text-center text-white-50 col-12">Belum ada bukti kemenangan yang diterbitkan.</div>`;
             }
-        }
+        }, (error) => {
+            console.error(error);
+            feedContainer.innerHTML = `<div class="text-center text-danger col-12">Gagal memuat data. Periksa pengaturan Firebase Rules Anda.</div>`;
+        });
     </script>
 </body>
 </html>
