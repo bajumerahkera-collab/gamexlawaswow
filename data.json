@@ -1,16 +1,11 @@
 {
-  "providers": [
-    { "name": "Pragmatic Play", "img": "https://img.viva88athenae.com/pp-w.png" },
-    { "name": "PG Soft", "img": "https://img.viva88athenae.com/pg-w.png" },
-    { "name": "Habanero", "img": "https://img.viva88athenae.com/hb-w.png" },
-    { "name": "Spadegaming", "img": "https://img.viva88athenae.com/sg-w.png" }
+  "masterGames": [
+    { "name": "Mahjong Ways 2", "provider": "PG Soft", "image": "https://images.unsplash.com/photo-1606167668584-78701c57f13d?w=400" },
+    { "name": "Gates of Olympus 1000", "provider": "Pragmatic Play", "image": "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=400" },
+    { "name": "Spirited Wonders", "provider": "PG Soft", "image": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=400" },
+    { "name": "Starlight Princess", "provider": "Pragmatic Play", "image": "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=400" },
+    { "name": "Sweet Bonanza", "provider": "Pragmatic Play", "image": "https://images.unsplash.com/photo-1606167668584-78701c57f13d?w=400" },
+    { "name": "Wild Bounty Bandito", "provider": "PG Soft", "image": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=400" }
   ],
-  "pool_slots": [
-    { "name": "Mahjong Ways 2", "provider": "PG Soft", "img": "https://img.viva88athenae.com/pg/images/mahjong-ways2.png" },
-    { "name": "Gates Of Olympus 1000", "provider": "Pragmatic Play", "img": "https://img.viva88athenae.com/pp/images/vs20olympx.png" },
-    { "name": "Sweet Bonanza", "provider": "Pragmatic Play", "img": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=400" },
-    { "name": "Starlight Princess", "provider": "Pragmatic Play", "img": "https://img.viva88athenae.com/pp/images/vs20starlight.png" },
-    { "name": "Fortune Rabbit", "provider": "PG Soft", "img": "httpshttps://img.viva88athenae.com/pg/images/fortune-rabbit.png" },
-    { "name": "Koi Gate", "provider": "Habanero", "img": "https://img.viva88athenae.com/hb/images/circle/SGTheKoiGate.png" }
-  ]
+  "masterUsers": ["BNK***2", "KAN***6", "MAR****", "BOT***8", "RUN***3", "CHX***9", "ZVN***1", "LWS***7", "TTO***4", "SPO***5"]
 }
