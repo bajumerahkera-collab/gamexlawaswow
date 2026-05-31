@@ -4,13 +4,13 @@
 
 // 1. Konfigurasi Firebase (Samakan dengan admin.html kamu)
 const firebaseConfig = {
-    apiKey: "PASTE_API_KEY_FIREBASE_KAMU_DISINI",
-    authDomain: "proyek-kamu.firebaseapp.com",
-    databaseURL: "https://proyek-kamu-default-rtdb.firebaseio.com",
-    projectId: "proyek-kamu",
-    storageBucket: "proyek-kamu.appspot.com",
-    messagingSenderId: "1234567890",
-    appId: "1:12345:web:12345"
+  apiKey: "AIzaSyCEbmZLDH6mQ-baQM4b58z_89bhBy3ggb8",
+  authDomain: "gamelawaswow.firebaseapp.com",
+  databaseURL: "https://gamelawaswow-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "gamelawaswow",
+  storageBucket: "gamelawaswow.firebasestorage.app",
+  messagingSenderId: "1027106854763",
+  appId: "1:1027106854763:web:6b59883c73733da4c6de2e",
 };
 
 // Validasi agar Firebase tidak di-inisialisasi dua kali jika ada script lain
