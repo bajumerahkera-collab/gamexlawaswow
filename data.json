@@ -1,0 +1,19 @@
+{
+  "providers": [
+    { "name": "Pragmatic Play", "img": "https://img.viva88athenae.com/pp-w.png" },
+    { "name": "PG Soft", "img": "https://img.viva88athenae.com/pg-w.png" },
+    { "name": "Habanero", "img": "https://img.viva88athenae.com/hb-w.png" },
+    { "name": "Spadegaming", "img": "https://img.viva88athenae.com/sg-w.png" }
+  ],
+  "pool_slots": [
+    { "name": "Mahjong Ways 2", "provider": "PG Soft", "img": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=400" },
+    { "name": "Gates Of Olympus 1000", "provider": "Pragmatic Play", "img": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=400" },
+    { "name": "Sweet Bonanza", "provider": "Pragmatic Play", "img": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=400" },
+    { "name": "Starlight Princess", "provider": "Pragmatic Play", "img": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400" },
+    { "name": "Fortune Rabbit", "provider": "PG Soft", "img": "https://images.unsplash.com/photo-1570158268183-d296b2892211?w=400" },
+    { "name": "Koi Gate", "provider": "Habanero", "img": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400" }
+  ],
+  "bukti_jp": [
+    { "title": "Kemenangan Mahjong Ways Member SA*********97", "img": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600", "date": "2026-05-31" }
+  ]
+}
