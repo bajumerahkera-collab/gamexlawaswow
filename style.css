@@ -1,327 +1,92 @@
-<!doctype html>
-<html lang="id">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>LAWASTOTO - Portal Info RTP & Bukti JP Terupdate</title>
-    <!-- Bootstrap 5 CSS -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
-    
-    <style>
-        body {
-            background-color: #0b0f19;
-            color: #f8fafc;
-            font-family: system-ui, -apple-system, sans-serif;
-            padding-bottom: 80px; /* Jarak aman agar konten bawah tidak tertutup Bottom Nav */
-        }
-        .splide__slide img {
-            width: 100%;
-            height: 160px;
-            object-fit: cover;
-        }
-        /* Live Jackpot Styles */
-        .jp-item {
-            background: linear-gradient(90deg, #111827 0%, #1f2937 100%);
-            border: 1px solid #374151;
-            border-radius: 8px;
-            padding: 10px;
-            margin-bottom: 8px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        .jp-profile-img {
-            width: 45px;
-            height: 45px;
-            border-radius: 6px;
-            object-fit: cover;
-        }
-        .jp-info { flex-grow: 1; }
-        .jp-user { font-weight: bold; font-size: 0.9rem; color: #38bdf8; }
-        .jp-game { font-size: 0.75rem; color: #9ca3af; }
-        .jp-values { text-align: right; }
-        .jp-amt { font-size: 0.85rem; font-weight: bold; color: #4ade80; }
-        .jp-wd { font-size: 0.75rem; color: #f87171; }
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:sans-serif;
+}
 
-        /* Provider Slider */
-        .provider-card {
-            background: #1e293b;
-            border-radius: 6px;
-            padding: 8px;
-            text-align: center;
-        }
-        .provider-card img {
-            height: 30px;
-            object-fit: contain;
-        }
+body{
+background:#07130c;
+color:white;
+}
 
-        /* Card Slot RTP */
-        .slot-card {
-            background: #111827;
-            border: 1px solid #1e293b;
-            border-radius: 12px;
-            overflow: hidden;
-            padding: 8px;
-            position: relative;
-        }
-        .slot-img-wrap {
-            position: relative;
-            border-radius: 8px;
-            overflow: hidden;
-        }
-        .slot-img-wrap img {
-            width: 100%;
-            height: 120px;
-            object-fit: cover;
-        }
-        .badge-promo {
-            position: absolute; top: 5px; left: 5px;
-            background: #ef4444; color: #fff; font-size: 0.65rem; font-weight: bold;
-            padding: 2px 6px; border-radius: 4px;
-        }
-        .badge-online {
-            position: absolute; bottom: 5px; right: 5px;
-            background: rgba(0,0,0,0.7); color: #4ade80; font-size: 0.65rem;
-            padding: 2px 6px; border-radius: 4px;
-        }
-        .slot-rtp-container { margin: 10px 0; }
-        .slot-rtp-bar {
-            background: #374151; height: 18px; border-radius: 20px; overflow: hidden; position: relative;
-        }
-        .slot-rtp-progress {
-            background: linear-gradient(90deg, #e11d48, #2563eb);
-            height: 100%; text-align: center; color: white; font-size: 0.75rem; font-weight: bold; line-height: 18px;
-        }
-        .pola-box {
-            background: #0f172a; border-radius: 6px; padding: 6px; margin-bottom: 8px; font-size: 0.75rem;
-        }
-        .pola-line { display: flex; justify-content: space-between; margin-bottom: 3px; color: #9ca3af; }
-        .pola-hint { font-size: 0.6rem; text-align: center; color: #6b7280; margin-bottom: 8px; }
-        .slot-actions { display: flex; gap: 4px; }
-        .btn-pola, .btn-main-game {
-            flex: 1; border: none; font-size: 0.75rem; font-weight: bold; padding: 6px; border-radius: 6px;
-            transition: opacity 0.2s ease;
-        }
-        .btn-pola { background: #374151; color: #fff; }
-        .btn-main-game { background: #2563eb; color: #fff; }
-        .btn-pola:active, .btn-main-game:active { opacity: 0.8; }
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px;
+}
 
-        /* Galeri Bukti JP */
-        .gallery-card {
-            background: #111827; border: 1px solid #1e293b; border-radius: 12px; overflow: hidden;
-            height: 100%;
-        }
-        .gallery-img { width: 100%; height: auto; display: block; max-height: 250px; object-fit: cover; }
-        .gallery-title { padding: 12px; font-size: 0.85rem; font-weight: bold; color: #fff; }
+.logo img{
+height:70px;
+}
 
-        /* Bottom Nav Menu */
-        .bottom-nav {
-            position: fixed; bottom: 0; left: 0; right: 0; height: 56px;
-            background: #0f172a; border-top: 1px solid #1e293b;
-            display: flex; justify-content: space-around; align-items: center; z-index: 1000;
-        }
-        .bottom-nav-item { text-align: center; color: #6b7280; cursor: pointer; text-decoration: none; flex: 1; }
-        .bottom-nav-item span { font-size: 1.2rem; display: block; }
-        .nav-text { font-size: 0.65rem; margin-top: 2px; }
-        .bottom-nav-item.active { color: #2563eb; font-weight: bold; }
-    </style>
-</head>
-<body>
+.menu-btns{
+display:flex;
+gap:10px;
+}
 
-    <!-- CONTAINER UTAMA -->
-    <div class="container py-4" style="max-width: 600px;">
-        
-        <!-- HEADER LOGO -->
-        <div class="text-center mb-4">
-            <h1 class="fw-bold text-white tracking-wide">🎰 LAWASTOTO</h1>
-            <p class="text-white-50 small">RTP Live Slot & Bukti JP Member Terpercaya</p>
-        </div>
+.btn-outline{
+background:transparent;
+border:2px solid #6eff00;
+color:#6eff00;
+padding:12px 24px;
+border-radius:15px;
+}
 
-        <!-- SECTION 1: LIVE JACKPOT TERBARU -->
-        <div class="mb-4">
-            <h5 class="fw-bold text-white mb-3">🔥 LIVE WITHDRAWAL TERBARU</h5>
-            
-            <div class="jp-item shadow-sm">
-                <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=80" class="jp-profile-img" alt="Avatar">
-                <div class="jp-info">
-                    <div class="jp-user">ID: LW****12</div>
-                    <div class="jp-game">Mahjong Ways 2</div>
-                </div>
-                <div class="jp-values">
-                    <div class="jp-amt">IDR 8,450,000</div>
-                    <div class="jp-wd">⚡ WD Sukses</div>
-                </div>
-            </div>
+.btn-solid{
+background:#6eff00;
+border:none;
+color:#000;
+padding:12px 24px;
+font-weight:bold;
+border-radius:15px;
+}
 
-            <div class="jp-item shadow-sm">
-                <img src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?w=80" class="jp-profile-img" alt="Avatar">
-                <div class="jp-info">
-                    <div class="jp-user">ID: ST****88</div>
-                    <div class="jp-game">Gates of Olympus 1000</div>
-                </div>
-                <div class="jp-values">
-                    <div class="jp-amt">IDR 15,200,000</div>
-                    <div class="jp-wd">⚡ WD Sukses</div>
-                </div>
-            </div>
-        </div>
+.slider{
+padding:15px;
+}
 
-        <!-- SECTION 2: LIVE CARD RTP SLOT -->
-        <div class="mb-5">
-            <h5 class="fw-bold text-white mb-3">✨ BOCORAN RTP & POLA HARI INI</h5>
-            <div class="row g-3">
-                
-                <!-- Card Game 1 -->
-                <div class="col-6">
-                    <div class="slot-card shadow-sm">
-                        <div class="slot-img-wrap">
-                            <img src="https://images.unsplash.com/photo-1606167668584-78701c57f13d?w=300" alt="Game">
-                            <span class="badge-promo">HOT</span>
-                            <span class="badge-online">🟢 2.4k</span>
-                        </div>
-                        <div class="slot-rtp-container">
-                            <div class="slot-rtp-bar">
-                                <div class="slot-rtp-progress" style="width: 96.8%;">96.8%</div>
-                            </div>
-                        </div>
-                        <div class="pola-box">
-                            <div class="pola-line"><span>🔄 Auto Turbo</span> <span>30x</span></div>
-                            <div class="pola-line"><span>⚡ Manual</span> <span>15x</span></div>
-                            <div class="pola-line"><span>❌ DC</span> <span>Off</span></div>
-                        </div>
-                        <div class="slot-actions">
-                            <button class="btn-pola">Pola</button>
-                            <button class="btn-main-game">Main</button>
-                        </div>
-                    </div>
-                </div>
+.slider img{
+width:100%;
+border-radius:20px;
+}
 
-                <!-- Card Game 2 -->
-                <div class="col-6">
-                    <div class="slot-card shadow-sm">
-                        <div class="slot-img-wrap">
-                            <img src="https://images.unsplash.com/photo-1518895949257-7621c3c786d7?w=300" alt="Game">
-                            <span class="badge-promo" style="background:#2563eb;">NURTURE</span>
-                            <span class="badge-online">🟢 1.1k</span>
-                        </div>
-                        <div class="slot-rtp-container">
-                            <div class="slot-rtp-bar">
-                                <div class="slot-rtp-progress" style="width: 89.4%; background: linear-gradient(90deg, #f59e0b, #e11d48);">89.4%</div>
-                            </div>
-                        </div>
-                        <div class="pola-box">
-                            <div class="pola-line"><span>🔄 Auto Quick</span> <span>20x</span></div>
-                            <div class="pola-line"><span>⚡ Manual</span> <span>10x</span></div>
-                            <div class="pola-line"><span>✅ DC</span> <span>On</span></div>
-                        </div>
-                        <div class="slot-actions">
-                            <button class="btn-pola">Pola</button>
-                            <button class="btn-main-game">Main</button>
-                        </div>
-                    </div>
-                </div>
+.content{
+padding:20px;
+}
 
-            </div>
-        </div>
+.content h1{
+font-size:48px;
+line-height:1.1;
+margin-bottom:20px;
+}
 
-        <!-- SECTION 3: GALERI BUKTI JP AUTOMATIC (SINKRON DASHBOARD ADMIN) -->
-        <div class="mb-5" id="section-bukti">
-            <h5 class="fw-bold text-white mb-3">🏆 FEED BUKTI KEMENANGAN MEMBER</h5>
-            
-            <!-- Tempat Munculnya Foto dari Firebase -->
-            <div id="firebaseBuktiGallery" class="row g-3">
-                <div class="text-center text-white-50 py-4 col-12">
-                    <span class="spinner-border spinner-border-sm me-2" role="status"></span>
-                    Menghubungkan ke server feed JP...
-                </div>
-            </div>
-        </div>
+.content p{
+font-size:22px;
+line-height:1.8;
+color:#d8d8d8;
+}
 
-    </div>
+.providers{
+padding:20px;
+}
 
-    <!-- BOTTOM NAV MENU MULA-MULA -->
-    <div class="bottom-nav">
-        <a href="#" class="bottom-nav-item active">
-            <span>🏠</span>
-            <div class="nav-text">Home</div>
-        </a>
-        <a href="#" class="bottom-nav-item">
-            <span>🔥</span>
-            <div class="nav-text">RTP Live</div>
-        </a>
-        <a href="#section-bukti" class="bottom-nav-item">
-            <span>🏆</span>
-            <div class="nav-text">Bukti JP</div>
-        </a>
-        <a href="https://lc.chat" target="_blank" class="bottom-nav-item">
-            <span>💬</span>
-            <div class="nav-text">Livechat</div>
-        </a>
-    </div>
+.providers h2{
+margin-bottom:20px;
+letter-spacing:3px;
+}
 
-    <!-- FIREBASE LIBRARIES (Ver 8.10.1 agar klop dengan dashboard admin kamu) -->
-    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+.provider-grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:15px;
+}
 
-    <script>
-        // ⚠️ PENTING: Samakan konfigurasi ini persis dengan file admin-lawas.html milikmu!
-        const firebaseConfig = {
-            apiKey: "PASTE_API_KEY_FIREBASE_KAMU_DISINI",
-            authDomain: "proyek-kamu.firebaseapp.com",
-            databaseURL: "https://proyek-kamu-default-rtdb.firebaseio.com",
-            projectId: "proyek-kamu",
-            storageBucket: "proyek-kamu.appspot.com",
-            messagingSenderId: "1234567890",
-            appId: "1:12345:web:12345"
-        };
-        
-        // Inisialisasi Firebase
-        firebase.initializeApp(firebaseConfig);
-        const database = firebase.database();
-
-        // Ambil container gallery
-        const galleryContainer = document.getElementById('firebaseBuktiGallery');
-
-        // Tarik data secara Realtime dari node 'bukti_jp'
-        database.ref('bukti_jp').on('value', (snapshot) => {
-            galleryContainer.innerHTML = ""; // Hapus pesan loading bawaan
-            
-            if (snapshot.exists()) {
-                const data = snapshot.val();
-                
-                // Urutkan data dari yang paling baru di-upload (paling atas)
-                const keys = Object.keys(data).reverse(); 
-
-                keys.forEach((key) => {
-                    const item = data[key];
-                    
-                    // Kerangka HTML pembentuk item galeri (.gallery-card kamu)
-                    const cardContent = `
-                        <div class="col-6 col-md-4">
-                            <div class="gallery-card shadow-sm h-100">
-                                <img src="${item.img}" class="gallery-img" alt="Bukti Kemenangan LAWASTOTO" onclick="window.open(this.src)">
-                                <div class="gallery-title">
-                                    ${item.title}
-                                    <div class="text-white-50 mt-1" style="font-size: 0.65rem;">📅 ${item.date}</div>
-                                </div>
-                            </div>
-                        </div>
-                    `;
-                    galleryContainer.innerHTML += cardContent;
-                });
-            } else {
-                galleryContainer.innerHTML = `
-                    <div class="text-center text-white-50 py-4 col-12" style="font-size: 0.85rem;">
-                        Belum ada postingan bukti kemenangan terbaru saat ini.
-                    </div>`;
-            }
-        }, (error) => {
-            console.error(error);
-            galleryContainer.innerHTML = `
-                <div class="text-center text-danger py-4 col-12" style="font-size: 0.85rem;">
-                    ❌ Gagal sinkronisasi data. Cek kembali aturan (Rules) Read/Write Firebase kamu.
-                </div>`;
-        });
-    </script>
-</body>
-</html>
+.card{
+background:#111;
+border:1px solid #6eff00;
+padding:40px;
+text-align:center;
+border-radius:20px;
+}
