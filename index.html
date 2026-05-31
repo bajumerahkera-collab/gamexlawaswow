@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;600;700;900&display=swap" rel="stylesheet">
 
-    <!-- SplideJS (Slider Banner) CSS & JS -->
+    <!-- SplideJS CSS & JS (Untuk Slider Banner & Slider Provider) -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/splidejs/4.1.4/css/splide.min.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/splidejs/4.1.4/js/splide.min.js"></script>
 
@@ -21,14 +21,16 @@
 
     <style>
         :root {
-            --bs-body-bg: #131A15;
-            --bs-body-color: #D9D9DA;
-            --bs-secondary-bg: #2D3730;
-            --bs-dark: #212922;
-            --bs-border-color: #2E332E;
-            --bs-link-color: #6EFE01;
-            --bs-primary: #FFC200;
-            --card-bg: #1C241D;
+            --bs-body-bg: #0b0f19; /* Gelap kebiruan */
+            --bs-body-color: #cbd5e1;
+            --bs-secondary-bg: #1e293b;
+            --bs-border-color: #1e293b;
+            --card-bg: #111827;
+            
+            /* TEMA WARNA BIRU GLOW */
+            --glow-blue: #00f0ff;
+            --glow-blue-dim: #00a8ff;
+            --blue-shadow: rgba(0, 240, 255, 0.25);
         }
 
         body {
@@ -36,137 +38,352 @@
             color: var(--bs-body-color);
             font-family: 'Titillium Web', sans-serif;
             padding-top: 75px;
+            padding-bottom: 85px; /* Spasi agar tidak tertutup bottom nav */
         }
 
-        /* Navbar Style Mirip Asli */
+        /* Navbar Style */
         .navbar {
-            background-color: #1C241D !important;
-            border-bottom: 1px solid var(--bs-border-color);
+            background-color: #0f172a !important;
+            border-bottom: 1px solid #1e293b;
             padding: 10px 0;
         }
 
-        .navbar-brand img {
-            max-height: 40px;
+        /* Logo Beraksen Glow Biru */
+        .brand-logo {
+            font-weight: 900;
+            font-size: 1.6rem;
+            letter-spacing: 1px;
+            color: #ffffff;
+            text-shadow: 0 0 8px var(--glow-blue), 0 0 20px var(--glow-blue-dim);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
 
-        .btn-primary {
-            background-color: var(--bs-primary);
-            border-color: var(--bs-primary);
+        .btn-glow-primary {
+            background-color: var(--glow-blue);
+            border: none;
             color: #000;
             font-weight: 700;
+            box-shadow: 0 0 12px var(--blue-shadow);
         }
 
-        .btn-primary:hover {
-            background-color: #e5af00;
+        .btn-glow-primary:hover {
+            background-color: #ffffff;
+            box-shadow: 0 0 18px rgba(255, 255, 255, 0.5);
             color: #000;
         }
 
-        .btn-outline-primary {
-            color: var(--bs-primary);
-            border-color: var(--bs-primary);
+        .btn-glow-outline {
+            color: var(--glow-blue);
+            border: 1px solid var(--glow-blue);
+            background: transparent;
             font-weight: 600;
         }
 
-        .btn-outline-primary:hover {
-            background-color: var(--bs-primary);
+        .btn-glow-outline:hover {
+            background-color: var(--glow-blue);
             color: #000;
+            box-shadow: 0 0 12px var(--blue-shadow);
         }
 
-        /* Content Text */
-        .content {
+        /* Banner & Sections */
+        .content-box {
             background: var(--card-bg);
             border: 1px solid var(--bs-border-color);
-            border-radius: 8px;
+            border-radius: 12px;
             padding: 15px;
         }
 
-        .content h1 {
+        .section-title {
             color: #fff;
-            font-size: 1.5rem;
+            font-size: 1.25rem;
             font-weight: 700;
+            letter-spacing: 0.5px;
+            border-left: 4px solid var(--glow-blue);
+            padding-left: 10px;
+            margin-bottom: 15px;
         }
 
-        /* Divider Provider */
-        .divider {
-            margin: 20px 0;
-            border-bottom: 2px solid var(--bs-border-color);
-        }
-
-        .divider-text {
-            color: var(--bs-link-color);
-            font-size: 1.1rem;
-            font-weight: 700;
-            margin-bottom: 5px;
-        }
-
-        /* SUSUNAN KARTU PROVIDER MIRIP ASLI */
-        .provider-item {
-            background: var(--card-bg);
+        /* SLIDER PROVIDER HORIZONTAL (image_03b9a0.png) */
+        .provider-container {
+            background: #0f172a;
             border: 1px solid var(--bs-border-color);
-            border-radius: 8px;
+            border-radius: 16px;
             padding: 12px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-between;
-            height: 100%;
-            transition: all 0.3s ease;
-            text-decoration: none;
         }
 
-        .provider-item:hover {
-            border-color: var(--bs-link-color);
-            transform: translateY(-2px);
-        }
-
-        .provider-img-wrap {
-            height: 50px;
+        .provider-card {
+            background: #111827;
+            border: 1px solid #1e293b;
+            border-radius: 12px;
+            padding: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 12px;
-            width: 100%;
+            height: 65px;
+            transition: all 0.3s ease;
         }
 
-        .provider-img-wrap img {
+        .provider-card img {
             max-height: 100%;
             max-width: 85%;
             object-fit: contain;
+            filter: drop-shadow(0px 0px 4px rgba(255,255,255,0.1));
         }
 
-        /* RTP Progress Bar */
-        .rtp-wrap {
-            width: 100%;
+        .splide__slide.is-active .provider-card, .provider-card:hover {
+            border-color: var(--glow-blue);
+            box-shadow: inset 0 0 8px rgba(0, 240, 255, 0.15), 0 0 10px var(--blue-shadow);
         }
 
-        .rtp-text {
+        /* 5 JACKPOT TERAKHIR (image_03b65d.png) */
+        .jp-item {
+            background: #0f172a;
+            border: 1px solid #1e293b;
+            border-radius: 40px 15px 15px 40px;
+            padding: 8px 15px 8px 8px;
             display: flex;
+            align-items: center;
             justify-content: space-between;
-            font-size: 0.8rem;
-            font-weight: 700;
-            margin-bottom: 4px;
-            color: #fff;
+            margin-bottom: 10px;
+            transition: border-color 0.3s;
         }
 
-        .progress {
-            background-color: #2D3730;
-            height: 12px;
-            border-radius: 50px;
+        .jp-item:hover {
+            border-color: var(--glow-blue);
+        }
+
+        .jp-profile-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 2px solid var(--glow-blue);
+            box-shadow: 0 0 8px var(--blue-shadow);
+            object-fit: cover;
+        }
+
+        .jp-info {
+            flex-grow: 1;
+            padding-left: 12px;
+            font-size: 0.85rem;
+        }
+
+        .jp-user {
+            color: #38bdf8;
+            font-weight: 700;
+        }
+
+        .jp-game {
+            color: #94a3b8;
+            font-size: 0.75rem;
+        }
+
+        .jp-values {
+            text-align: right;
+            font-size: 0.85rem;
+            font-weight: 700;
+        }
+
+        .jp-amt {
+            color: var(--glow-blue);
+        }
+
+        .jp-wd {
+            color: #34d399;
+        }
+
+        /* REKOMENDASI SLOT (image_03ae5d.jpg) */
+        .slot-card {
+            background: #0f172a;
+            border: 1px solid #1e293b;
+            border-radius: 14px;
+            padding: 10px;
+            position: relative;
             overflow: hidden;
         }
 
-        .progress-bar {
-            font-size: 0.7rem;
-            font-weight: 800;
-            color: #000;
+        .slot-img-wrap {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            aspect-ratio: 1/1;
         }
 
-        /* Warna Bar dinamis */
-        .bg-rtp-high {
-            background: linear-gradient(90deg, #19FF00, #6EFE01) !important;
+        .slot-img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
-        .bg-rtp-mid {
-            background: linear-gradient(90deg, #F3C22E, #FFC200) !important;
+
+        .badge-online {
+            position: absolute;
+            top: 6px;
+            right: 6px;
+            background: rgba(0,0,0,0.7);
+            color: #34d399;
+            font-size: 0.65rem;
+            padding: 2px 6px;
+            border-radius: 50px;
+            font-weight: 700;
+        }
+
+        .badge-online::before {
+            content: '';
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            background: #34d399;
+            border-radius: 50%;
+            margin-right: 4px;
+        }
+
+        .badge-promo {
+            position: absolute;
+            top: 6px;
+            left: 6px;
+            background: #ef4444;
+            color: #fff;
+            font-size: 0.65rem;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        /* RTP & Pola */
+        .slot-rtp-container {
+            margin: 8px 0;
+        }
+
+        .slot-rtp-bar {
+            background: #1e293b;
+            height: 14px;
+            border-radius: 50px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .slot-rtp-progress {
+            background: linear-gradient(90deg, #00d2ff, var(--glow-blue)) !important;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            color: #000;
+            font-weight: 900;
+        }
+
+        .pola-box {
+            background: #111827;
+            border-radius: 6px;
+            padding: 5px;
+            font-size: 0.75rem;
+            margin-bottom: 8px;
+        }
+
+        .pola-line {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #1e293b;
+            padding: 2px 2px;
+        }
+
+        .pola-line:last-child { border: none; }
+        
+        .pola-val-auto { color: var(--glow-blue); font-weight: 700; }
+        .pola-val-man { color: #f59e0b; font-weight: 700; }
+
+        .pola-hint {
+            font-size: 0.65rem;
+            color: #64748b;
+            text-align: center;
+            margin-bottom: 8px;
+        }
+
+        /* Action Buttons */
+        .slot-actions {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6px;
+        }
+
+        .btn-pola {
+            background: transparent;
+            border: 1px solid var(--glow-blue);
+            color: var(--glow-blue);
+            font-size: 0.8rem;
+            font-weight: 700;
+            padding: 5px 0;
+            border-radius: 6px;
+        }
+
+        .btn-main-game {
+            background: var(--glow-blue);
+            border: none;
+            color: #000;
+            font-size: 0.8rem;
+            font-weight: 700;
+            padding: 5px 0;
+            border-radius: 6px;
+            box-shadow: 0 0 6px var(--blue-shadow);
+        }
+
+        /* STICKY BOTTOM NAVIGATION (image_03aabb.png) */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid #1e293b;
+            display: flex;
+            justify-content: space-around;
+            padding: 8px 0;
+            z-index: 999;
+        }
+
+        .bottom-nav-item {
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #64748b;
+            font-size: 0.7rem;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+
+        .bottom-nav-item i {
+            font-size: 1.3rem;
+            margin-bottom: 2px;
+        }
+
+        .bottom-nav-item.active {
+            color: var(--glow-blue);
+            text-shadow: 0 0 8px rgba(0, 240, 255, 0.4);
+        }
+
+        /* Custom Audio Floating Button */
+        .floating-support {
+            position: fixed;
+            bottom: 75px;
+            right: 15px;
+            width: 50px;
+            height: 50px;
+            background: var(--glow-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #000;
+            font-size: 1.6rem;
+            box-shadow: 0 0 15px var(--glow-blue);
+            z-index: 1000;
+            text-decoration: none;
         }
     </style>
 </head>
@@ -176,14 +393,15 @@
     <header class="fixed-top">
         <nav class="navbar navbar-expand-lg navbar-dark">
             <div class="container">
-                <a class="navbar-brand font-black text-warning fs-3 tracking-wide text-decoration-none" href="#">
-                    <i class="ri-fire-fill text-danger"></i> LAWASTOTO
+                <!-- LOGO DENGAN AKSEN GLOW (image_03bd01.png) -->
+                <a class="https://lawaswow.com/images/logoweb.png" href="#">
+                    <i class="ri-flashlight-fill" style="color: var(--glow-blue);"></i> LAWASTOTO
                 </a>
                 
                 <div class="d-flex align-items-center">
                     <div class="d-flex d-lg-none gap-1">
-                        <a class="btn btn-sm btn-outline-primary" href="https://shorturl.at/YSBTy">Main</a>
-                        <a class="btn btn-sm btn-primary" href="https://shorturl.at/YSBTy">Daftar</a>
+                        <a class="btn btn-sm btn-glow-outline" href="https://shorturl.at/YSBTy">Main</a>
+                        <a class="btn btn-sm btn-glow-primary" href="https://shorturl.at/YSBTy">Daftar</a>
                     </div>
                     <button class="navbar-toggler ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#mainMenu">
                         <span class="navbar-toggler-icon"></span>
@@ -197,8 +415,8 @@
                         <li class="nav-item"><a class="nav-link" href="#">Tournaments</a></li>
                         <li class="nav-item d-none d-lg-block">
                             <div class="d-flex gap-2">
-                                <a class="btn btn-outline-primary" href="https://shorturl.at/YSBTy" target="_blank">Main</a>
-                                <a class="btn btn-primary" href="https://shorturl.at/YSBTy" target="_blank">Daftar</a>
+                                <a class="btn btn-glow-outline" href="https://shorturl.at/YSBTy" target="_blank">Main</a>
+                                <a class="btn btn-glow-primary" href="https://shorturl.at/YSBTy" target="_blank">Daftar</a>
                             </div>
                         </li>
                     </ul>
@@ -208,124 +426,228 @@
     </header>
 
     <!-- Konten Utama -->
-    <main class="container shadow">
+    <main class="container shadow mt-3">
         
-        <!-- Banner Slider Berjalan (Diperbaiki: Menambah Jumlah Slide) -->
-        <div class="splide mb-3" id="mainSlide" role="group">
+        <!-- Banner Slider Berjalan -->
+        <div class="splide mb-4" id="mainSlide" role="group">
             <div class="splide__track">
                 <ul class="splide__list">
-                    <!-- Slide 1 -->
                     <li class="splide__slide">
                         <a href="https://shorturl.at/YSBTy" target="_blank">
                             <img src="https://img.viva88athenae.com/events/pp-ramadhan-26.jpg" class="d-block w-100 rounded" style="max-height: 280px; object-fit: cover;" alt="Promo 1">
                         </a>
                     </li>
-                    <!-- Slide 2 (Tambahan agar efek jalan berfungsi otomatis) -->
                     <li class="splide__slide">
                         <a href="https://shorturl.at/YSBTy" target="_blank">
-                            <img src="https://img.viva88athenae.com/events/mega-gacor-l3-2026.jpg" class="d-block w-100 rounded" style="max-height: 280px; object-fit: cover;" alt="Promo 2">
+                            <img src="https://img.viva88athenae.com/events/pp-candy-rush-june-26.jpg" class="d-block w-100 rounded" style="max-height: 280px; object-fit: cover;" alt="Promo 2">
                         </a>
                     </li>
                 </ul>
             </div>
         </div>
 
-        <!-- Teks Deskripsi -->
-        <div class="content mb-4">
+        <!-- SLIDER BAR PROVIDERS (image_03b9a0.png) -->
+        <div class="mb-4">
+            <div class="section-title">PROVIDERS</div>
+            <div class="provider-container">
+                <div class="splide" id="providerSlide">
+                    <div class="splide__track">
+                        <ul class="splide__list">
+                            <li class="splide__slide">
+                                <div class="provider-card"><img src="https://img.viva88athenae.com/pp-w.png" alt="Pragmatic Play"></div>
+                            </li>
+                            <li class="splide__slide">
+                                <div class="provider-card"><img src="https://img.viva88athenae.com/pg-w.png" alt="PG Soft"></div>
+                            </li>
+                            <li class="splide__slide">
+                                <div class="provider-card"><img src="https://img.viva88athenae.com/hb-w.png" alt="Habanero"></div>
+                            </li>
+                            <li class="splide__slide">
+                                <div class="provider-card"><img src="https://img.viva88athenae.com/sg-w.png" alt="Spadegaming"></div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 5 LIST JACKPOT TERAKHIR (image_03b65d.png) -->
+        <div class="mb-4">
+            <div class="section-title">5 Jackpot Terakhir</div>
+            <div class="content-box">
+                
+                <!-- List 1 -->
+                <div class="jp-item">
+                    <img src="httpshttps://img.viva88athenae.com/pg/images/fortune-rabbit.png" class="jp-profile-img" alt="User">
+                    <div class="jp-info">
+                        <div class="jp-user">NU****7</div>
+                        <div class="jp-game">Fortune Rabbit (PG Soft)</div>
+                    </div>
+                    <div class="jp-values">
+                        <div class="jp-amt">JP: Rp 9.000.000</div>
+                        <div class="jp-wd">WD: Rp 8.397.000</div>
+                    </div>
+                </div>
+
+                <!-- List 2 -->
+                <div class="jp-item">
+                    <img src="https://img.viva88athenae.com/pp/images/vs20olympgate.png" class="jp-profile-img" alt="User">
+                    <div class="jp-info">
+                        <div class="jp-user">MO****1</div>
+                        <div class="jp-game">Gates of Olympus (Pragmatic)</div>
+                    </div>
+                    <div class="jp-values">
+                        <div class="jp-amt">JP: Rp 6.900.000</div>
+                        <div class="jp-wd">WD: Rp 6.500.000</div>
+                    </div>
+                </div>
+
+                <!-- List 3 -->
+                <div class="jp-item">
+                    <img src="https://img.viva88athenae.com/pg/images/mahjong-ways2.png" class="jp-profile-img" alt="User">
+                    <div class="jp-info">
+                        <div class="jp-user">RE****9</div>
+                        <div class="jp-game">Mahjong Ways 2 (PG Soft)</div>
+                    </div>
+                    <div class="jp-values">
+                        <div class="jp-amt">JP: Rp 4.200.000</div>
+                        <div class="jp-wd">WD: Rp 4.000.000</div>
+                    </div>
+                </div>
+
+                <!-- List 4 -->
+                <div class="jp-item">
+                    <img src="https://img.viva88athenae.com/pp/images/vs20fruitsw-t.png" class="jp-profile-img" alt="User">
+                    <div class="jp-info">
+                        <div class="jp-user">AL****2</div>
+                        <div class="jp-game">Sweet Bonanza (Pragmatic)</div>
+                    </div>
+                    <div class="jp-values">
+                        <div class="jp-amt">JP: Rp 12.500.000</div>
+                        <div class="jp-wd">WD: Rp 12.100.000</div>
+                    </div>
+                </div>
+
+                <!-- List 5 -->
+                <div class="jp-item">
+                    <img src="https://img.viva88athenae.com/hb/images/circle/SGTheKoiGate.png" class="jp-profile-img" alt="User">
+                    <div class="jp-info">
+                        <div class="jp-user">SU****5</div>
+                        <div class="jp-game">Koi Gate (Habanero)</div>
+                    </div>
+                    <div class="jp-values">
+                        <div class="jp-amt">JP: Rp 3.150.000</div>
+                        <div class="jp-wd">WD: Rp 3.100.000</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- REKOMENDASI SLOT GRID DENGAN POLA (image_03ae5d.jpg) -->
+        <div class="mb-4">
+            <div class="section-title">REKOMENDASI SLOT</div>
+            
+            <div class="row g-2">
+                <!-- Game 1 -->
+                <div class="col-6">
+                    <div class="slot-card">
+                        <div class="slot-img-wrap">
+                            <span class="badge-online">14.16K Online</span>
+                            <img src="https://img.viva88athenae.com/pg/images/mahjong-ways.png" alt="Mahjong Ways">
+                        </div>
+                        <div class="slot-rtp-container">
+                            <div class="slot-rtp-bar">
+                                <div class="slot-rtp-progress" style="width: 86%;">86%</div>
+                            </div>
+                        </div>
+                        <div class="pola-box">
+                            <div class="pola-line"><span>Manual</span><span class="pola-val-man">15X</span></div>
+                            <div class="pola-line"><span>Auto Turbo</span><span class="pola-val-auto">180X</span></div>
+                            <div class="pola-line"><span>Auto Fast</span><span class="pola-val-auto">10X</span></div>
+                        </div>
+                        <div class="pola-hint">Klik Pola untuk lebih lengkap.</div>
+                        <div class="slot-actions">
+                            <button class="btn-pola">Pola</button>
+                            <button class="btn-main-game">Main</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Game 2 -->
+                <div class="col-6">
+                    <div class="slot-card">
+                        <div class="slot-img-wrap">
+                            <span class="badge-promo">PROMO</span>
+                            <span class="badge-online">17.77K Online</span>
+                            <img src="https://img.viva88athenae.com/pp/images/vs20olympgate.png" alt="Gates Of Olympus">
+                        </div>
+                        <div class="slot-rtp-container">
+                            <div class="slot-rtp-bar">
+                                <div class="slot-rtp-progress" style="width: 90%;">90%</div>
+                            </div>
+                        </div>
+                        <div class="pola-box">
+                            <div class="pola-line"><span>Manual</span><span class="pola-val-man">25X</span></div>
+                            <div class="pola-line"><span>Manual Fast</span><span class="pola-val-man">20X</span></div>
+                            <div class="pola-line"><span>Auto Turbo</span><span class="pola-val-auto">100X</span></div>
+                        </div>
+                        <div class="pola-hint">Klik Pola untuk lebih lengkap.</div>
+                        <div class="slot-actions">
+                            <button class="btn-pola">Pola</button>
+                            <button class="btn-main-game">Main</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TEKS TIPS BERMAIN - AKHIR PALING BAWAH (image_03aabb.png) -->
+        <div class="content-box mb-4">
             <article>
-                <h1>Bocoran RTP Terbaru &amp; Permainan Game Online Berkualitas</h1>
-                <p class="m-0" style="font-size: 0.9rem; line-height: 1.6;">
-                    Dalam dunia Game online memahami <i><strong>Return to Player (RTP)</strong></i> adalah kunci untuk meningkatkan peluang kemenangan Anda. <strong>RTP </strong>adalah persentase dari total taruhan yang dibayarkan kembali kepada pemain dalam jangka waktu tertentu. Semakin tinggi nilai RTP, semakin besar peluang Anda untuk menang. Oleh karena itu, mengetahui bocoran RTP kemenangan terbaru dan terupdate hari ini adalah langkah cerdas bagi setiap pemain yang ingin memaksimalkan kemenangan mereka.
+                <h2 class="h5 text-white fw-bold mb-3">Tips Memanfaatkan Bocoran RTP untuk Meningkatkan Peluang Menang</h2>
+                <p style="font-size: 0.85rem; line-height: 1.6; color: #94a3b8;">
+                    Mengetahui RTP game terbaru saja tidak cukup; Anda juga perlu strategi untuk memanfaatkannya. Berikut beberapa tips yang bisa Anda terapkan:
                 </p>
+                <ol class="ps-3 text-start" style="font-size: 0.85rem; line-height: 1.6; color: #cbd5e1;">
+                    <li class="mb-2"><strong>Pilih Game dengan RTP Tinggi:</strong> Game dengan RTP tinggi menawarkan peluang lebih besar untuk menang dalam jangka panjang. Fokuskan permainan Anda pada game ini.</li>
+                    <li class="mb-2"><strong>Manfaatkan Bonus dan Promosi:</strong> Gunakan keuntungan event promosi aktif untuk menambah modal bermain Anda lebih lama.</li>
+                    <li class="mb-2"><strong>Kelola Anggaran dengan Baik:</strong> Selalu tentukan batas kekalahan dan kemenangan sebelum mulai bermain dan patuhi aturan tersebut demi mengamankan saldo Anda.</li>
+                </ol>
             </article>
         </div>
 
-        <!-- Divider Judul -->
-        <div class="divider text-start">
-            <h3 class="divider-text m-0">PROVIDERS</h3>
-        </div>
-
-        <!-- GRID PROVIDER -->
-        <div class="row g-2 mb-5">
-            
-            <!-- Provider 1: Pragmatic Play -->
-            <div class="col-6 col-sm-4 col-md-3">
-                <a href="#" class="provider-item">
-                    <div class="provider-img-wrap">
-                        <img src="https://img.viva88athenae.com/pp-w.png" alt="Pragmatic Play">
-                    </div>
-                    <div class="rtp-wrap">
-                        <div class="rtp-text">
-                            <span>RTP Live</span>
-                            <span class="text-success">98.5%</span>
-                        </div>
-                        <div class="progress">
-                            <div class="progress-bar bg-rtp-high text-dark" role="progressbar" style="width: 98.5%">98.5%</div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-            <!-- Provider 2: PG Soft -->
-            <div class="col-6 col-sm-4 col-md-3">
-                <a href="#" class="provider-item">
-                    <div class="provider-img-wrap">
-                        <img src="https://img.viva88athenae.com/pg-w.png" alt="PG Soft">
-                    </div>
-                    <div class="rtp-wrap">
-                        <div class="rtp-text">
-                            <span>RTP Live</span>
-                            <span class="text-success">96.2%</span>
-                        </div>
-                        <div class="progress">
-                            <div class="progress-bar bg-rtp-high text-dark" role="progressbar" style="width: 96.2%">96.2%</div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-            <!-- Provider 3: Habanero -->
-            <div class="col-6 col-sm-4 col-md-3">
-                <a href="#" class="provider-item">
-                    <div class="provider-img-wrap">
-                        <img src="https://img.viva88athenae.com/hb-w.png" alt="Habanero">
-                    </div>
-                    <div class="rtp-wrap">
-                        <div class="rtp-text">
-                            <span>RTP Live</span>
-                            <span class="text-warning">89.4%</span>
-                        </div>
-                        <div class="progress">
-                            <div class="progress-bar bg-rtp-mid text-dark" role="progressbar" style="width: 89.4%">89.4%</div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-            <!-- Provider 4: Spadegaming -->
-            <div class="col-6 col-sm-4 col-md-3">
-                <a href="#" class="provider-item">
-                    <div class="provider-img-wrap">
-                        <img src="https://img.viva88athenae.com/sg-w.png" alt="Spadegaming">
-                    </div>
-                    <div class="rtp-wrap">
-                        <div class="rtp-text">
-                            <span>RTP Live</span>
-                            <span class="text-success">92.7%</span>
-                        </div>
-                        <div class="progress">
-                            <div class="progress-bar bg-rtp-high text-dark" role="progressbar" style="width: 92.7%">92.7%</div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-        </div>
     </main>
 
-    <!-- Script Slider Banner -->
+    <!-- FLOATING LIVE CHAT BUTTON -->
+    <a href="#" class="floating-support">
+        <i class="ri-customer-service-2-fill"></i>
+    </a>
+
+    <!-- STICKY BOTTOM NAVIGATION BAR (image_03aabb.png) -->
+    <div class="bottom-nav">
+        <a href="#" class="bottom-nav-item active">
+            <i class="ri-home-4-line"></i>
+            <span>HOME</span>
+        </a>
+        <a href="#" class="bottom-nav-item">
+            <i class="ri-money-dollar-circle-line"></i>
+            <span>BUKTI JP</span>
+        </a>
+        <a href="#" class="bottom-nav-item">
+            <i class="ri-trophy-line"></i>
+            <span>EVENT</span>
+        </a>
+        <a href="https://shorturl.at/YSBTy" class="bottom-nav-item">
+            <i class="ri-play-circle-line"></i>
+            <span>MAIN</span>
+        </a>
+    </div>
+
+    <!-- Script Inisialisasi Sliders -->
     <script>
         document.addEventListener('DOMContentLoaded', function () {
+            // Slider Banner Atas
             if(document.getElementById('mainSlide')) {
                 new Splide('#mainSlide', {
                     type: 'loop',
@@ -333,6 +655,23 @@
                     interval: 3000,
                     arrows: false,
                     pagination: true,
+                }).mount();
+            }
+
+            // Slider Provider Bar Horizontal (image_03b9a0.png)
+            if(document.getElementById('providerSlide')) {
+                new Splide('#providerSlide', {
+                    type: 'slide',
+                    perPage: 3,
+                    perMove: 1,
+                    gap: '10px',
+                    arrows: true,
+                    pagination: false,
+                    breakpoints: {
+                        576: { perPage: 2.5 },
+                        768: { perPage: 3 },
+                        1024: { perPage: 4 }
+                    }
                 }).mount();
             }
         });
