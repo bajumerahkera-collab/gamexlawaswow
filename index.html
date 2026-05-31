@@ -5,14 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>LAWASTOTO: Update Kemenangan Setiap Hari, Setiap Detik</title>
     <meta name="description" content="Bocoran Permainan Game Online Berkualistas Dan Bukti Kemenangan Member Update Setiap Hari">
-    <meta name="author" content="LAWASTOTO">
-
+    
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Kdam+Thmor+Pro&family=Kode+Mono:wght@400..700&family=Titillium+Web:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;600;700;900&display=swap" rel="stylesheet">
 
-    <!-- SplideJS (Slider) CSS & JS -->
+    <!-- SplideJS (Slider Banner) CSS & JS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/splidejs/4.1.4/css/splide.min.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/splidejs/4.1.4/js/splide.min.js"></script>
 
@@ -29,28 +28,25 @@
             --bs-border-color: #2E332E;
             --bs-link-color: #6EFE01;
             --bs-primary: #FFC200;
-            --bs-success: #19FF00;
+            --card-bg: #1C241D;
         }
 
         body {
             background-color: var(--bs-body-bg);
             color: var(--bs-body-color);
             font-family: 'Titillium Web', sans-serif;
-            padding-top: 80px;
+            padding-top: 75px;
         }
 
+        /* Navbar Style Mirip Asli */
         .navbar {
-            background-color: #1c241d !important;
-            border-bottom: 2px solid var(--bs-border-color);
+            background-color: #1C241D !important;
+            border-bottom: 1px solid var(--bs-border-color);
+            padding: 10px 0;
         }
 
-        .nav-link {
-            color: #fff !important;
-            font-weight: 600;
-        }
-
-        .nav-link.active, .nav-link:hover {
-            color: var(--bs-link-color) !important;
+        .navbar-brand img {
+            max-height: 40px;
         }
 
         .btn-primary {
@@ -62,7 +58,6 @@
 
         .btn-primary:hover {
             background-color: #e5af00;
-            border-color: #e5af00;
             color: #000;
         }
 
@@ -77,76 +72,120 @@
             color: #000;
         }
 
+        /* Content Text */
         .content {
-            background: #1C241D;
+            background: var(--card-bg);
             border: 1px solid var(--bs-border-color);
-            border-radius: 12px;
-            padding: 20px;
+            border-radius: 8px;
+            padding: 15px;
         }
 
         .content h1 {
-            color: var(--bs-primary);
-            font-size: 1.8rem;
+            color: #fff;
+            font-size: 1.5rem;
             font-weight: 700;
-            margin-bottom: 15px;
         }
 
+        /* Divider Provider */
         .divider {
-            margin: 25px 0 15px 0;
+            margin: 20px 0;
             border-bottom: 2px solid var(--bs-border-color);
-            position: relative;
         }
 
         .divider-text {
-            background: var(--bs-body-bg);
             color: var(--bs-link-color);
-            font-size: 1.2rem;
-            font-weight: 800;
-            display: inline-block;
-            padding-right: 15px;
-            margin-bottom: -2px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 5px;
         }
 
-        .provider-card {
-            background: #1C241D;
+        /* SUSUNAN KARTU PROVIDER MIRIP ASLI */
+        .provider-item {
+            background: var(--card-bg);
             border: 1px solid var(--bs-border-color);
             border-radius: 8px;
             padding: 12px;
-            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            height: 100%;
             transition: all 0.3s ease;
+            text-decoration: none;
         }
 
-        .provider-card:hover {
+        .provider-item:hover {
             border-color: var(--bs-link-color);
-            transform: translateY(-3px);
+            transform: translateY(-2px);
         }
 
-        .provider-card img {
-            max-height: 40px;
-            filter: grayscale(20%);
-            transition: 0.3s;
+        .provider-img-wrap {
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 12px;
+            width: 100%;
         }
 
-        .provider-card:hover img {
-            filter: grayscale(0%);
+        .provider-img-wrap img {
+            max-height: 100%;
+            max-width: 85%;
+            object-fit: contain;
+        }
+
+        /* RTP Progress Bar */
+        .rtp-wrap {
+            width: 100%;
+        }
+
+        .rtp-text {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+            color: #fff;
+        }
+
+        .progress {
+            background-color: #2D3730;
+            height: 12px;
+            border-radius: 50px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            font-size: 0.7rem;
+            font-weight: 800;
+            color: #000;
+        }
+
+        /* Warna Bar dinamis */
+        .bg-rtp-high {
+            background: linear-gradient(90deg, #19FF00, #6EFE01) !important;
+        }
+        .bg-rtp-mid {
+            background: linear-gradient(90deg, #F3C22E, #FFC200) !important;
         }
     </style>
 </head>
 <body>
 
-    <!-- Header / Navigasi -->
+    <!-- Header / Navbar -->
     <header class="fixed-top">
         <nav class="navbar navbar-expand-lg navbar-dark">
             <div class="container">
-                <a class="navbar-brand flex items-center font-black text-warning fs-3 tracking-wide" href="#">
+                <!-- GANTI URL Gambar di bawah dengan logo websitemu jika ada -->
+                <a class="navbar-brand font-black text-warning fs-3 tracking-wide text-decoration-none" href="#">
                     <i class="ri-fire-fill text-danger"></i> LAWASTOTO
                 </a>
                 
                 <div class="d-flex align-items-center">
                     <div class="d-flex d-lg-none gap-1">
-                        <!-- Ganti '#' dengan Link Alternatif Anda -->
-                        <a class="btn btn-sm btn-outline-primary" href="#">Main</a>
-                        <a class="btn btn-sm btn-primary" href="#">Daftar</a>
+                        <!-- MASUKKAN LINK DAFTARMU DI SINI (Tampilan HP) -->
+                        <a class="btn btn-sm btn-outline-primary" href="https://shorturl.at/YSBTy">Main</a>
+                        <a class="btn btn-sm btn-primary" href="https://shorturl.at/YSBTy">Daftar</a>
                     </div>
                     <button class="navbar-toggler ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#mainMenu">
                         <span class="navbar-toggler-icon"></span>
@@ -154,14 +193,15 @@
                 </div>
 
                 <div class="collapse navbar-collapse" id="mainMenu">
-                    <ul class="navbar-nav ms-auto align-items-lg-center">
+                    <ul class="navbar-nav ms-auto align-items-lg-center gap-2">
                         <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
                         <li class="nav-item"><a class="nav-link" href="#">Bukti Jackpot</a></li>
                         <li class="nav-item"><a class="nav-link" href="#">Tournaments</a></li>
-                        <li class="nav-item d-none d-lg-block ms-2">
+                        <li class="nav-item d-none d-lg-block">
                             <div class="d-flex gap-2">
-                                <a class="btn btn-outline-primary" href="https://lawasajak.com/">Main</a>
-                                <a class="btn btn-primary" href="https://lawasajak.com/">Daftar</a>
+                                <!-- MASUKKAN LINK DAFTARMU DI SINI (Tampilan Laptop) -->
+                                <a class="btn btn-outline-primary" href="https://shorturl.at/YSBTy" target="_blank">Main</a>
+                                <a class="btn btn-primary" href="https://shorturl.at/YSBTy" target="_blank">Daftar</a>
                             </div>
                         </li>
                     </ul>
@@ -171,87 +211,126 @@
     </header>
 
     <!-- Konten Utama -->
-    <main class="container">
+    <main class="container shadow">
         
-        <!-- Banner Slider (Promo Besar Atas) -->
-        <div class="splide mb-4" id="mainSlide">
+        <!-- Banner Slider Berjalan -->
+        <div class="splide mb-3" id="mainSlide" role="group">
             <div class="splide__track">
                 <ul class="splide__list">
                     <li class="splide__slide">
-                        <a href="#">
-                            <img src="https://img.viva88athenae.com/events/pp-ramadhan-26.jpg" style="max-height: 350px; object-fit: cover;" alt="Banner 1">
-                        </a>
-                    </li>
-                    <li class="splide__slide">
-                        <a href="#">
-                            <img src="https://img.viva88athenae.com/events/pg-mei-26.jpg" style="max-height: 350px; object-fit: cover;" alt="Banner 2">
+                        <a href="https://shorturl.at/YSBTy" target="_blank">
+                            <img src="https://i.postimg.cc/mD8Z8xkX/banner-placeholder.gif" class="d-block w-100 rounded" style="max-height: 280px; object-fit: cover;" alt="Promo 1">
                         </a>
                     </li>
                 </ul>
             </div>
         </div>
 
-        <!-- Teks Artikel Atas -->
+        <!-- Teks Deskripsi -->
         <div class="content mb-4">
             <article>
                 <h1>Bocoran RTP Terbaru &amp; Permainan Game Online Berkualitas</h1>
-                <p>Dalam dunia Game online memahami <i><strong>Return to Player (RTP)</strong></i> adalah kunci untuk meningkatkan peluang kemenangan Anda. <strong>RTP </strong>adalah persentase dari total taruhan yang dibayarkan kembali kepada pemain dalam jangka waktu tertentu. Semakin tinggi nilai RTP, semakin besar peluang Anda untuk menang. Oleh karena itu, mengetahui bocoran RTP kemenangan terbaru dan terupdate hari ini adalah langkah cerdas bagi setiap pemain yang ingin memaksimalkan kemenangan mereka.</p>
+                <p class="m-0" style="font-size: 0.9rem; line-height: 1.6;">
+                    Dalam dunia Game online memahami <i><strong>Return to Player (RTP)</strong></i> adalah kunci untuk meningkatkan peluang kemenangan Anda. <strong>RTP </strong>adalah persentase dari total taruhan yang dibayarkan kembali kepada pemain dalam jangka waktu tertentu. Semakin tinggi nilai RTP, semakin besar peluang Anda untuk menang. Oleh karena itu, mengetahui bocoran RTP kemenangan terbaru dan terupdate hari ini adalah langkah cerdas bagi setiap pemain yang ingin memaksimalkan kemenangan mereka.
+                </p>
             </article>
         </div>
 
-        <!-- Judul Bagian Providers -->
+        <!-- Divider Judul -->
         <div class="divider text-start">
-            <h3 class="divider-text">PROVIDERS</h3>
+            <h3 class="divider-text m-0">PROVIDERS</h3>
         </div>
 
-        <!-- Grid Pembungkus Provider (Praktis & Ringan) -->
-        <div class="row g-3 mb-5">
+        <!-- GRID PROVIDER + BAR RTP AKTIF (MIRIP 100%) -->
+        <div class="row g-2 mb-5">
+            
+            <!-- Provider 1: Pragmatic Play -->
             <div class="col-6 col-sm-4 col-md-3">
-                <div class="provider-card">
-                    <a href="#" class="text-decoration-none text-white">
-                        <div class="fw-bold mb-1 text-warning">PRAGMATIC PLAY</div>
-                        <span class="badge bg-success">RTP 98.4%</span>
-                    </a>
-                </div>
+                <a href="#" class="provider-item">
+                    <div class="provider-img-wrap">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/2/20/Pragmatic_Play_Logo.svg" alt="Pragmatic Play">
+                    </div>
+                    <div class="rtp-wrap">
+                        <div class="rtp-text">
+                            <span>RTP Live</span>
+                            <span class="text-success">98.5%</span>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar bg-rtp-high text-dark" role="progressbar" style="width: 98.5%">98.5%</div>
+                        </div>
+                    </div>
+                </a>
             </div>
-            <div class="col-6 col-sm-4 col-md-3">
-                <div class="provider-card">
-                    <a href="#" class="text-decoration-none text-white">
-                        <div class="fw-bold mb-1 text-warning">PG SOFT</div>
-                        <span class="badge bg-success">RTP 97.6%</span>
-                    </a>
-                </div>
-            </div>
-            <div class="col-6 col-sm-4 col-md-3">
-                <div class="provider-card">
-                    <a href="#" class="text-decoration-none text-white">
-                        <div class="fw-bold mb-1 text-warning">HABANERO</div>
-                        <span class="badge bg-warning text-dark">RTP 89.2%</span>
-                    </a>
-                </div>
-            </div>
-            <div class="col-6 col-sm-4 col-md-3">
-                <div class="provider-card">
-                    <a href="#" class="text-decoration-none text-white">
-                        <div class="fw-bold mb-1 text-warning">SPADEGAMING</div>
-                        <span class="badge bg-success">RTP 95.1%</span>
-                    </a>
-                </div>
-            </div>
-        </div>
 
+            <!-- Provider 2: PG Soft -->
+            <div class="col-6 col-sm-4 col-md-3">
+                <a href="#" class="provider-item">
+                    <div class="provider-img-wrap">
+                        <img src="https://i.postimg.cc/pT5n4H5V/pgsoft.png" alt="PG Soft">
+                    </div>
+                    <div class="rtp-wrap">
+                        <div class="rtp-text">
+                            <span>RTP Live</span>
+                            <span class="text-success">96.2%</span>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar bg-rtp-high text-dark" role="progressbar" style="width: 96.2%">96.2%</div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Provider 3: Habanero -->
+            <div class="col-6 col-sm-4 col-md-3">
+                <a href="#" class="provider-item">
+                    <div class="provider-img-wrap">
+                        <img src="https://i.postimg.cc/3wMvD2h9/habanero.png" alt="Habanero">
+                    </div>
+                    <div class="rtp-wrap">
+                        <div class="rtp-text">
+                            <span>RTP Live</span>
+                            <span class="text-warning">89.4%</span>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar bg-rtp-mid text-dark" role="progressbar" style="width: 89.4%">89.4%</div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Provider 4: Spadegaming -->
+            <div class="col-6 col-sm-4 col-md-3">
+                <a href="#" class="provider-item">
+                    <div class="provider-img-wrap">
+                        <img src="https://i.postimg.cc/44rGvQ0d/spadegaming.png" alt="Spadegaming">
+                    </div>
+                    <div class="rtp-wrap">
+                        <div class="rtp-text">
+                            <span>RTP Live</span>
+                            <span class="text-success">92.7%</span>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar bg-rtp-high text-dark" role="progressbar" style="width: 92.7%">92.7%</div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+        </div>
     </main>
 
-    <!-- Script Inisialisasi Jalannya Slider -->
+    <!-- Script Slider Banner -->
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            new Splide('#mainSlide', {
-                type: 'loop',
-                autoplay: true,
-                interval: 3000,
-                arrows: false,
-                pagination: true,
-            }).mount();
+            if(document.getElementById('mainSlide')) {
+                new Splide('#mainSlide', {
+                    type: 'loop',
+                    autoplay: true,
+                    interval: 3000,
+                    arrows: false,
+                    pagination: true,
+                }).mount();
+            }
         });
     </script>
 </body>
