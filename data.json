@@ -1,11 +1,336 @@
 {
   "masterGames": [
-    { "name": "Mahjong Ways 2", "provider": "PG Soft", "image": "https://images.unsplash.com/photo-1606167668584-78701c57f13d?w=400" },
-    { "name": "Gates of Olympus 1000", "provider": "Pragmatic Play", "image": "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=400" },
-    { "name": "Spirited Wonders", "provider": "PG Soft", "image": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=400" },
-    { "name": "Starlight Princess", "provider": "Pragmatic Play", "image": "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=400" },
-    { "name": "Sweet Bonanza", "provider": "Pragmatic Play", "image": "https://images.unsplash.com/photo-1606167668584-78701c57f13d?w=400" },
-    { "name": "Wild Bounty Bandito", "provider": "PG Soft", "image": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=400" }
+    { 
+      "name": "Gates of Olympus 1000", 
+      "provider": "Pragmatic Play", 
+      "image": "https://img.viva88athenae.com/pp/images/vs20olympx.png" 
+    },
+    { 
+      "name": "Jelly Express", 
+      "provider": "Pragmatic Play", 
+      "image": "https://img.viva88athenae.com/pp/images/vs20payanyvol.png" 
+    },
+    { 
+      "name": "Sweet Bonanza 2500", 
+      "provider": "Pragmatic Play", 
+      "image": "https://img.viva88athenae.com/pp/images/vs20swbon2500.png" 
+    },
+    { 
+      "name": "Gates of Olympus Super Scatter", 
+      "provider": "Pragmatic Play", 
+      "image": "https://img.viva88athenae.com/pp/images/vs20olympgold.png" 
+    },
+    { 
+      "name": "Mahjong Wins 3 - Black Scatter", 
+      "provider": "Pragmatic Play", 
+      "image": "https://img.viva88athenae.com/pp/images/vswaysmahwblck.png" 
+    },
+    { 
+      "name": "Starlight Princess 1000", 
+      "provider": "Pragmatic Play", 
+      "image": "https://img.viva88athenae.com/pp/images/vs20starlightx.png" 
+    },
+    { 
+      "name": "Sweet Bonanza 1000", 
+      "provider": "Pragmatic Play", 
+      "image": "https://img.viva88athenae.com/pp/images/vs20fruitswx.png" 
+    },
+    { 
+      "name": "Gates of Olympus", 
+      "provider": "Pragmatic Play", 
+      "image": "https://img.viva88athenae.com/pp/images/vs20olympgate.png" 
+    },
+    { 
+      "name": "Mahjong Wins 2", 
+      "provider": "Pragmatic Play", 
+      "image": "https://img.viva88athenae.com/pp/images/vswaysmahwin2.png" 
+    },
+    { 
+      "name": "Gates of Gatot Kaca 1000", 
+      "provider": "Pragmatic Play", 
+      "image": "https://img.viva88athenae.com/pp/images/vs20gatotx.png" 
+    },
+    { 
+      "name": "Starlight Princess Super Scatter", 
+      "provider": "Pragmatic Play", 
+      "image": "https://img.viva88athenae.com/pp/images/vs20starprss.png" 
+    },
+    { 
+      "name": "Sweet Bonanza", 
+      "provider": "Pragmatic Play", 
+      "image": "https://img.viva88athenae.com/pp/images/vs20fruitsw-t.png" 
+    },
+    { 
+      "name": "Fortune of Olympus", 
+      "provider": "Pragmatic Play", 
+      "image": "https://img.viva88athenae.com/pp/images/vs20olympgcl.png" 
+    },
+    { 
+      "name": "Starlight Princess", 
+      "provider": "Pragmatic Play", 
+      "image": "https://img.viva88athenae.com/pp/images/vs20starlight.png" 
+    },
+    { 
+      "name": "Sugar Rush 1000", 
+      "provider": "Pragmatic Play", 
+      "image": "https://img.viva88athenae.com/pp/images/vs20sugarrushx.png" 
+    },
+    { 
+      "name": "Gates of Gatot Kaca Super Scatter", 
+      "provider": "Pragmatic Play", 
+      "image": "https://img.viva88athenae.com/pp/images/vs20olgatssc.png" 
+    },
+    { 
+      "name": "Sweet Bonanza Super Scatter", 
+      "provider": "Pragmatic Play", 
+      "image": "https://img.viva88athenae.com/pp/images/vs20swbonsup.png" 
+    },
+    { 
+      "name": "Mahjong Wins - Gong Xi Fa Cai", 
+      "provider": "Pragmatic Play", 
+      "image": "https://img.viva88athenae.com/pp/images/vswaysmahwgong.png" 
+    },
+    { 
+      "name": "Wisdom of Athena 1000", 
+      "provider": "Pragmatic Play", 
+      "image": "https://img.viva88athenae.com/pp/images/vs20procountx.png" 
+    },
+    { 
+      "name": "Sugar Rush Super Scatter", 
+      "provider": "Pragmatic Play", 
+      "image": "https://img.viva88athenae.com/pp/images/vs20sugrushss.png" 
+    },
+
+    
+    { 
+      "name": "Mighty Mania", 
+      "provider": "PG Soft", 
+      "image": "https://img.viva88athenae.com/pg/images/mighty-mania.png" 
+    },
+    { 
+      "name": "Reel Royale Showdown", 
+      "provider": "PG Soft", 
+      "image": "https://img.viva88athenae.com/pg/images/reel-royale-showdown.png" 
+    },
+    { 
+      "name": "Funky Fortunez", 
+      "provider": "PG Soft", 
+      "image": "https://img.viva88athenae.com/pg/images/funky-fortunez.png" 
+    },
+    { 
+      "name": "Mahjong Ways", 
+      "provider": "PG Soft", 
+      "image": "https://img.viva88athenae.com/pg/images/mahjong-ways.png" 
+    },
+    { 
+      "name": "Mahjong Ways 2", 
+      "provider": "PG Soft", 
+      "image": "https://img.viva88athenae.com/pg/images/mahjong-ways2.png" 
+    },
+    { 
+      "name": "Wild Bounty Showdown", 
+      "provider": "PG Soft", 
+      "image": "https://img.viva88athenae.com/pg/images/wild-bounty-showdown.png" 
+    },
+    { 
+      "name": "Wild Bandito", 
+      "provider": "PG Soft", 
+      "image": "https://img.viva88athenae.com/pg/images/wild-bandito.png" 
+    },
+    { 
+      "name": "Lucky Neko", 
+      "provider": "PG Soft", 
+      "image": "https://img.viva88athenae.com/pg/images/lucky-neko.png" 
+    },
+    { 
+      "name": "Treasures of Aztec", 
+      "provider": "PG Soft", 
+      "image": "https://img.viva88athenae.com/pg/images/treasures-aztec.png" 
+    },
+    { 
+      "name": "Wild Ape #3258", 
+      "provider": "PG Soft", 
+      "image": "https://img.viva88athenae.com/pg/images/wild-ape.png" 
+    },
+    { 
+      "name": "Ways of the Qilin", 
+      "provider": "PG Soft", 
+      "image": "https://img.viva88athenae.com/pg/images/ways-of-qilin.png" 
+    },
+    { 
+      "name": "Gemstones Gold", 
+      "provider": "PG Soft", 
+      "image": "https://img.viva88athenae.com/pg/images/gemstone-gold.png" 
+    },
+    { 
+      "name": "Pinata Wins", 
+      "provider": "PG Soft", 
+      "image": "https://img.viva88athenae.com/pg/images/pinata-wins.png" 
+    },
+    { 
+      "name": "Geisha's Revenge", 
+      "provider": "PG Soft", 
+      "image": "https://img.viva88athenae.com/pg/images/geishas-revenge.png" 
+    },
+    { 
+      "name": "Anubis Wrath", 
+      "provider": "PG Soft", 
+      "image": "https://img.viva88athenae.com/pg/images/anubis-wrath.png" 
+    },
+    { 
+      "name": "Mafia Mayhem", 
+      "provider": "PG Soft", 
+      "image": "https://img.viva88athenae.com/pg/images/mafia-mayhem.png" 
+    },
+    { 
+      "name": "Cocktail Nights", 
+      "provider": "PG Soft", 
+      "image": "https://img.viva88athenae.com/pg/images/cocktail-nite.png" 
+    },
+    { 
+      "name": "Dragon Hatch 2", 
+      "provider": "PG Soft", 
+      "image": "https://img.viva88athenae.com/pg/images/dragon-hatch2.png" 
+    },
+    { 
+      "name": "Jurassic Kingdom", 
+      "provider": "PG Soft", 
+      "image": "https://img.viva88athenae.com/pg/images/jurassic-kdm.png" 
+    },
+    { 
+      "name": "Mr Treasures Fortune", 
+      "provider": "PG Soft", 
+      "image": "https://img.viva88athenae.com/pg/images/mr-treasures-fortune.png" 
+    },
+    
+    
+    { 
+      "name": "Nuwa Deluxe", 
+      "provider": "Habanero", 
+      "image": "https://img.viva88athenae.com/hb/images/circle/SGNuwaDeluxe.png" 
+    },
+    { 
+      "name": "Steampunk Plinko", 
+      "provider": "Habanero", 
+      "image": "https://img.viva88athenae.com/hb/images/circle/SGSteampunkPlinko.png" 
+    },
+    { 
+      "name": "Prosperity Horse", 
+      "provider": "Habanero", 
+      "image": "https://img.viva88athenae.com/hb/images/circle/SGProsperityHorse.png" 
+    },
+    { 
+      "name": "Koi Gate", 
+      "provider": "Habanero", 
+      "image": "https://img.viva88athenae.com/hb/images/circle/SGTheKoiGate.png" 
+    },
+    { 
+      "name": "Hot Hot Fruit", 
+      "provider": "Habanero", 
+      "image": "https://img.viva88athenae.com/hb/images/circle/SGHotHotFruit.png" 
+    },
+    { 
+      "name": "Mystic Fortune Deluxe", 
+      "provider": "Habanero", 
+      "image": "https://img.viva88athenae.com/hb/images/circle/SGMysticFortuneDeluxe.png" 
+    },
+    { 
+      "name": "Laughing Buddha", 
+      "provider": "Habanero", 
+      "image": "https://img.viva88athenae.com/hb/images/circle/SGLaughingBuddha.png" 
+    },
+    { 
+      "name": "Wealth Inn", 
+      "provider": "Habanero", 
+      "image": "https://img.viva88athenae.com/hb/images/circle/SGWealthInn.png" 
+    },
+    { 
+      "name": "Happiest Christmas Tree", 
+      "provider": "Habanero", 
+      "image": "https://img.viva88athenae.com/hb/images/circle/SGHappiestChristmasTree.png" 
+    },
+    { 
+      "name": "5 Lucky Lions", 
+      "provider": "Habanero", 
+      "image": "https://img.viva88athenae.com/hb/images/circle/SG5LuckyLions.png" 
+    },
+    { 
+      "name": "Wild Trucks", 
+      "provider": "Habanero", 
+      "image": "https://img.viva88athenae.com/hb/images/circle/SGWildTrucks.png" 
+    },
+    { 
+      "name": "Jump", 
+      "provider": "Habanero", 
+      "image": "https://img.viva88athenae.com/hb/images/circle/SGJump.png" 
+    },
+    
+  
+    { 
+      "name": "Fortune Crown AI", 
+      "provider": "Joker", 
+      "image": "https://img.viva88athenae.com/jg/images/w7ea5wgt45m7e.png" 
+    },
+    { 
+      "name": "Cursed Deluxe AI", 
+      "provider": "Joker", 
+      "image": "https://img.viva88athenae.com/jg/images/3c46upfiiki4o.png" 
+    },
+    { 
+      "name": "Ancient Rome Deluxe AI", 
+      "provider": "Joker", 
+      "image": "https://img.viva88athenae.com/jg/images/4cs9dmfpwkt4y.png" 
+    },
+    { 
+      "name": "Roma", 
+      "provider": "Joker", 
+      "image": "https://img.viva88athenae.com/jg/images/5m6k9j7rwspjs.png" 
+    },
+    { 
+      "name": "Roma Legacy", 
+      "provider": "Joker", 
+      "image": "https://img.viva88athenae.com/jg/images/ape6dxf7sk35y.png" 
+    },
+    { 
+      "name": "Golden Dragon", 
+      "provider": "Joker", 
+      "image": "https://img.viva88athenae.com/jg/images/9w6aa6u5xbhzh.png" 
+    },
+    { 
+      "name": "Sizzling Hot", 
+      "provider": "Joker", 
+      "image": "https://img.viva88athenae.com/jg/images/ww3a8wsu4de7c.png" 
+    },
+    { 
+      "name": "Immortals", 
+      "provider": "Joker", 
+      "image": "https://img.viva88athenae.com/jg/images/qd1fcneqbhgy4.png" 
+    },
+    { 
+      "name": "Mayan Gems", 
+      "provider": "Joker", 
+      "image": "https://img.viva88athenae.com/jg/images/ha1jzrho1gmjq.png" 
+    },
+    { 
+      "name": "Roma Deluxe", 
+      "provider": "Joker", 
+      "image": "https://img.viva88athenae.com/jg/images/m6cwkgy3daxta.png" 
+    },
+    { 
+      "name": "Mahjong King", 
+      "provider": "Joker", 
+      "image": "https://img.viva88athenae.com/jg/images/3r369pizs144w.png" 
+    }
   ],
-  "masterUsers": ["BNK***2", "KAN***6", "MAR****", "BOT***8", "RUN***3", "CHX***9", "ZVN***1", "LWS***7", "TTO***4", "SPO***5"]
+  "masterUsers": [
+    "BNK***2", "KAN***6", "MAR****", "BOT***8", "RUN***3", 
+    "CHX***9", "ZVN***1", "LWS***7", "TTO***4", "SPO***5",
+    "LAWASTOTO***1", "JP***99", "MAX***88", "CUA***NG",
+    "RJK***8", "GLD***77", "HOK***99", "SLT***21", "ZUS***00",
+    "NEX***4", "VEX***9", "SPN***5", "WNN***7", "CPT***1",
+    "KNG***88", "PRM***3", "DRG***7", "STG***2", "LUK***89",
+    "SKY***0", "MGA***9", "PRG***5", "BOF***3", "FOX***7",
+    "GAT***1000", "SWE***2500", "STR***1000", "MAH***3", "SGR***88",
+    "JOK***7", "HAB***9", "PGS***2", "PRM***8", "VTR***1"
+  ]
 }
