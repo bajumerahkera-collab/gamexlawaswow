@@ -1,4 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
+    // Memaksa hapus cache lama agar tulisan 'undefined' hilang total
+    localStorage.clear(); 
+
     fetch('data.json')
         .then(response => response.json())
         .then(masterData => {
@@ -9,114 +12,93 @@ document.addEventListener("DOMContentLoaded", () => {
         .catch(error => console.error("Gagal memuat master data:", error));
 });
 
-// 1. RENDER & LOGIC PROVIDER SLIDE OTOMATIS KE SAMPING
+// 1. RENDER PROVIDER SLIDER
 function renderProviderSlider(games) {
     const track = document.getElementById('provider-track');
-    // Ambil daftar unik provider dari master data game
     const uniqueProviders = [...new Set(games.map(g => g.provider))];
     
     let trackContent = '';
     uniqueProviders.forEach(provider => {
         trackContent += `
-            <div class="inline-block min-w-[130px] bg-[#1e1e1e] py-2.5 px-4 rounded-xl border border-gray-800 text-center font-bold text-xs text-blue-400 font-sans tracking-wide">
+            <div class="inline-block min-w-[130px] bg-[#1e1e1e] py-2.5 px-4 rounded-xl border border-gray-800 text-center font-bold text-xs text-blue-400 tracking-wide">
                 ${provider.toUpperCase()}
             </div>
         `;
     });
-    
-    // Gandakan konten agar efek infinite scroll-nya mulus tanpa putus
     track.innerHTML = trackContent + trackContent;
 }
 
+// 2. PROSES AUTOMATED DATA
 function processAutomatedData(masterData) {
-    const ONE_HOUR = 60 * 60 * 1000; 
     const now = new Date().getTime();
     
-    let lastUpdate = localStorage.getItem('lawastoto_last_update');
-    let savedGames = localStorage.getItem('lawastoto_games');
-    let savedJackpots = localStorage.getItem('lawastoto_jackpots');
-
-    if (!lastUpdate || !savedGames || !savedJackpots || (now - lastUpdate) > ONE_HOUR) {
+    const freshGames = masterData.masterGames.map((game, index) => {
+        const randomRtp = Math.floor(Math.random() * (98 - 65 + 1)) + 65; 
+        const randomOnline = (Math.random() * (25 - 2) + 2).toFixed(2); 
         
-        const freshGames = masterData.masterGames.map((game, index) => {
-            const randomRtp = Math.floor(Math.random() * (98 - 65 + 1)) + 65; 
-            const randomOnline = (Math.random() * (25 - 2) + 2).toFixed(2); 
-            
-            const polaTemplates = [
-                ["🟢 80X Spin Auto", "⚡ 180X Spin Turbo", "❌ 10X Spin Auto"],
-                ["⚡ 5X Spin Manual", "🟢 30X Spin Manual", "⚡ 20X Spin Auto"],
-                ["❌ 15X Spin Manual", "⚡ 50X Spin Turbo", "🟢 40X Spin Turbo"]
-            ];
-            const randomPola = polaTemplates[Math.floor(Math.random() * polaTemplates.length)];
+        const polaTemplates = [
+            ["🟢 80X Spin Auto", "⚡ 180X Spin Turbo", "❌ 10X Spin Auto"],
+            ["⚡ 5X Spin Manual", "🟢 30X Spin Manual", "⚡ 20X Spin Auto"]
+        ];
+        const randomPola = polaTemplates[Math.floor(Math.random() * polaTemplates.length)];
 
-            return {
-                id: index + 1,
-                name: game.name,
-                provider: game.provider,
-                image: game.image,
-                rtp: randomRtp,
-                online: randomOnline,
-                pola: randomPola
-            };
+        return {
+            id: index + 1,
+            name: game.name,
+            provider: game.provider,
+            image: game.image,
+            rtp: randomRtp,
+            online: randomOnline,
+            pola: randomPola
+        };
+    });
+
+    // MEMBUAT DATA TANGGAL DAN JAM LIVE YANG VALID
+    const freshJackpots = [];
+    const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    
+    for (let i = 0; i < 10; i++) {
+        const randomGameObj = masterData.masterGames[Math.floor(Math.random() * masterData.masterGames.length)];
+        const randomUser = masterData.masterUsers[Math.floor(Math.random() * masterData.masterUsers.length)];
+        
+        const dateObj = new Date(now - (i * 15 * 60 * 1000));
+        const formattedDate = `${dateObj.getDate()} ${months[dateObj.getMonth()]} ${String(dateObj.getHours()).padStart(2, '0')}:${String(dateObj.getMinutes()).padStart(2, '0')}`;
+
+        const randomAmountNum = Math.floor(Math.random() * (25000000 - 3000000 + 1)) + 3000000;
+        const formattedAmount = new Intl.NumberFormat('id-ID').format(randomAmountNum);
+
+        freshJackpots.push({
+            user: randomUser,
+            game: randomGameObj.name,
+            image: randomGameObj.image,
+            date: formattedDate,
+            amount: formattedAmount
         });
-
-        // 2. DATA JACKPOT LENGKAP DENGAN DATA TANGGAL & JAM SEKARANG
-        const freshJackpots = [];
-        const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-        
-        for (let i = 0; i < 10; i++) {
-            const randomGameObj = masterData.masterGames[Math.floor(Math.random() * masterData.masterGames.length)];
-            const randomUser = masterData.masterUsers[Math.floor(Math.random() * masterData.masterUsers.length)];
-            
-            // Generate simulasi waktu random mundur beberapa menit ke belakang
-            const dateObj = new Date(now - (i * 12 * 60 * 1000));
-            const formattedDate = `${dateObj.getDate()} ${months[dateObj.getMonth()]} ${String(dateObj.getHours()).padStart(2, '0')}:${String(dateObj.getMinutes()).padStart(2, '0')}`;
-
-            const randomAmountNum = Math.floor(Math.random() * (25000000 - 3000000 + 1)) + 3000000;
-            const formattedAmount = new Intl.NumberFormat('id-ID').format(randomAmountNum);
-
-            freshJackpots.push({
-                user: randomUser,
-                game: randomGameObj.name,
-                image: randomGameObj.image,
-                date: formattedDate,
-                amount: formattedAmount
-            });
-        }
-
-        localStorage.setItem('lawastoto_games', JSON.stringify(freshGames));
-        localStorage.setItem('lawastoto_jackpots', JSON.stringify(freshJackpots));
-        localStorage.setItem('lawastoto_last_update', now);
-
-        savedGames = JSON.stringify(freshGames);
-        savedJackpots = JSON.stringify(freshJackpots);
     }
 
-    renderJackpots(JSON.parse(savedJackpots));
-    renderGames(JSON.parse(savedGames));
-    startLiveSimulation();
+    renderJackpots(freshJackpots);
+    renderGames(freshGames);
 }
 
-// 3. TAMPILAN 10 JACKPOT SEPERTI image_601474.png (ADA JAM, TANGGAL & GAME)
+// 3. RENDER LIVE JACKPOT (FIXED IMAGE & UNDEFINED)
 function renderJackpots(jackpots) {
     const container = document.getElementById('jackpot-container');
     container.innerHTML = '';
     
     jackpots.forEach(jp => {
         const item = document.createElement('div');
-        item.className = "bg-[#1f1f1f] p-2.5 rounded-xl flex items-center justify-between border border-gray-800/80 shadow-inner";
+        item.className = "bg-[#1f1f1f] p-2.5 rounded-xl flex items-center justify-between border border-gray-800/80 shadow-md";
         item.innerHTML = `
             <div class="flex items-center space-x-3 min-w-0">
-                <!-- Desain melingkar proporsional -->
-                <img src="${jp.image}" class="w-12 h-12 object-cover rounded-xl border border-gray-700 flex-shrink-0">
+                <img src="${jp.image}" onerror="this.src='https://placehold.co/150'" class="w-12 h-12 object-cover rounded-xl border border-gray-700 flex-shrink-0">
                 <div class="min-w-0 flex flex-col justify-center">
                     <p class="text-xs font-bold text-blue-400 truncate">${jp.user}</p>
                     <p class="text-[10px] text-gray-300 font-medium">${jp.date}</p>
-                    <p class="text-[10px] text-gray-500 truncate max-w-[130px] font-light">${jp.game}</p>
+                    <p class="text-[10px] text-gray-500 truncate max-w-[140px] font-light">${jp.game}</p>
                 </div>
             </div>
             <div class="text-right flex-shrink-0">
-                <p class="text-xs font-black text-white">JP: <span class="text-blue-400">Rp ${jp.amount}</span></p>
+                <p class="text-xs font-black text-white">JP: <span class="text-emerald-400">Rp ${jp.amount}</span></p>
                 <p class="text-[10px] text-gray-500 font-semibold">WD: Rp ${jp.amount}</p>
             </div>
         `;
@@ -124,7 +106,7 @@ function renderJackpots(jackpots) {
     });
 }
 
-// 4. GRID GAME DENGAN IMAGE PAS SQUARED (ANTI-KEPOTONG BORDER HITAM)
+// 4. RENDER GRID GAME
 function renderGames(games) {
     const container = document.getElementById('game-container');
     container.innerHTML = '';
@@ -142,15 +124,13 @@ function renderGames(games) {
         card.innerHTML = `
             <div>
                 <span class="absolute top-5 right-5 bg-black/85 text-[9px] text-blue-400 px-2 py-0.5 rounded-full flex items-center gap-1 font-bold z-10">
-                    <span class="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse"></span> <span class="live-count">${game.online}</span>K Online
+                    <span class="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse"></span> ${game.online}K Online
                 </span>
                 
-                <!-- FIX KEPOTONG: dikunci pakai w-full aspect-square agar presisi mengikuti bentuk box gambar slot asli -->
-                <div class="w-full aspect-square rounded-xl overflow-hidden mb-3 border border-gray-800/80">
-                    <img src="${game.image}" alt="${game.name}" class="w-full h-full object-cover">
+                <div class="w-full aspect-square rounded-xl overflow-hidden mb-3 border border-gray-800/80 bg-gray-900">
+                    <img src="${game.image}" onerror="this.src='https://placehold.co/150'" alt="${game.name}" class="w-full h-full object-cover">
                 </div>
                 
-                <!-- RTP BAR CENTERED -->
                 <div class="w-full bg-gray-900 h-5 rounded-md overflow-hidden mb-3 relative flex items-center">
                     <div class="bg-gradient-to-r ${barColor} h-full" style="width: ${game.rtp}%"></div>
                     <span class="absolute inset-0 flex items-center justify-center text-[10px] font-black text-white tracking-wider drop-shadow-md">
@@ -183,19 +163,4 @@ function initBannerSlider() {
         slides[currentSlide].classList.remove('opacity-0');
         slides[currentSlide].classList.add('opacity-100');
     }, 4000);
-}
-
-function startLiveSimulation() {
-    setInterval(() => {
-        const counts = document.querySelectorAll('.live-count');
-        counts.forEach(count => {
-            const currentNum = parseFloat(count.innerText);
-            if(!isNaN(currentNum)) {
-                const fluctuation = (Math.random() * 0.2 - 0.1).toFixed(2);
-                let finalNum = (currentNum + parseFloat(fluctuation)).toFixed(2);
-                if(finalNum < 1) finalNum = 3.50;
-                count.innerText = finalNum;
-            }
-        });
-    }, 5000);
 }
