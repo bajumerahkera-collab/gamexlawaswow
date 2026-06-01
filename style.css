@@ -30,3 +30,19 @@
     -ms-overflow-style: none;
     scrollbar-width: none;
 }
+/* Animasi Infinite Scroll Bergerak Otomatis Ke Samping */
+@keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+.animate-scroll {
+    display: flex;
+    width: max-content;
+    animation: scroll 25s linear infinite;
+}
+
+/* Biar track pas di-hover bisa berhenti sejenak */
+.animate-scroll:hover {
+    animation-play-state: paused;
+}
