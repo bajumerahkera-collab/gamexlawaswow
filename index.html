@@ -16,24 +16,37 @@
             <span class="text-2xl font-black tracking-wider neon-text">LAWASTOTO</span>
         </div>
         <div class="flex space-x-2">
-            <a href="https://lawasajak.com/" class="bg-gray-700 text-white px-4 py-1.5 rounded-md font-bold text-sm">Main</a>
-            <a href="https://lawasajak.com/" class="neon-bg text-black px-4 py-1.5 rounded-md font-bold text-sm">Daftar</a>
+            <a href="https://l1nq.com/f8pahdo" class="bg-gray-700 text-white px-4 py-1.5 rounded-md font-bold text-sm">Main</a>
+            <a href="https://l1nq.com/f8pahdo" class="neon-bg text-black px-4 py-1.5 rounded-md font-bold text-sm">Daftar</a>
         </div>
     </header>
 
-    <!-- 1. BANNER SLIDESHOW PAS PERSISI -->
-    <section class="p-4 relative">
-        <div id="banner-slider" class="w-full aspect-[22/9] rounded-2xl relative overflow-hidden border border-gray-800/60 bg-[#161616]">
-            <img src="https://img.viva88athenae.com/events/pp-candy-rush-june-26.jpg" class="slide absolute inset-0 w-full h-full object-cover opacity-100 transition-opacity duration-1000">
-            <img src="https://img.viva88athenae.com/events/mega-gacor-l3-2026.jpg" class="slide absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000">
+   <!-- 1. BANNER SLIDESHOW ULTRA-WIDE (PERSIS image_5ec99d.jpg) -->
+    <section class="px-4 pt-4 relative group">
+        <!-- Rasio diatur aspect-[3.8/1] atau aspect-[4/1] biar super ramping -->
+        <div id="banner-slider" class="w-full aspect-[3.8/1] rounded-2xl relative overflow-hidden border border-gray-800/40 bg-[#161616]">
+            
+            <!-- Slide Gambar -->
+            <img src="https://img.viva88athenae.com/events/mega-gacor-l3-2026.jpg" class="slide absolute inset-0 w-full h-full object-cover opacity-100 transition-all duration-700 ease-in-out">
+            <img src="https://img.viva88athenae.com/events/pp-candy-rush-june-26.jpg" class="slide absolute inset-0 w-full h-full object-cover opacity-0 transition-all duration-700 ease-in-out">
+            <img src="https://img.viva88athenae.com/events/pp-ramadhan-26.jpg" class="slide absolute inset-0 w-full h-full object-cover opacity-0 transition-all duration-700 ease-in-out">
+            
+            <!-- Tombol Navigasi Kiri / Kanan -->
+            <button onclick="changeSlide(-1)" class="absolute left-2 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/70 text-white/70 hover:text-white w-7 h-7 rounded-full flex items-center justify-center text-sm font-bold z-20 transition">❮</button>
+            <button onclick="changeSlide(1)" class="absolute right-2 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/70 text-white/70 hover:text-white w-7 h-7 rounded-full flex items-center justify-center text-sm font-bold z-20 transition">❯</button>
+            
+            <!-- Indikator Titik Kecil di Bawah Tengah -->
+            <div id="slide-dots" class="absolute bottom-2 left-1/2 -translate-x-1/2 flex space-x-1.5 z-20">
+                <!-- Diisi otomatis oleh JavaScript -->
+            </div>
         </div>
     </section>
 
-    <!-- 2. PROVIDER SLIDER AUTOMATIC INFINITE SCROLL -->
-    <section class="py-2 relative overflow-hidden bg-[#161616] border-y border-gray-800/60">
+    <!-- 2. PROVIDER SLIDER DENGAN LOGO GAMBAR & BISA DIKLIK -->
+    <section class="py-3 relative bg-[#161616] mt-4 border-y border-gray-800/60 overflow-hidden">
         <div class="flex w-full overflow-hidden relative">
-            <!-- Gerakan slide otomatis diatur via CSS / JS cloning -->
-            <div id="provider-track" class="flex space-x-4 animate-scroll whitespace-nowrap py-2 px-4">
+            <!-- Supaya mulus jalan otomatis tapi tetep bisa diklik filternya -->
+            <div id="provider-track" class="flex space-x-3 animate-scroll whitespace-nowrap py-1 px-4 items-center">
                 <!-- Diisi otomatis via JavaScript -->
             </div>
         </div>
