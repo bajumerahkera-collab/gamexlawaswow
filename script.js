@@ -1,34 +1,86 @@
+// Variabel Global untuk state aplikasi
+let currentSlideIndex = 0;
+let slideInterval;
+let allGamesData = []; 
+let activeProviderFilter = "ALL";
+
 document.addEventListener("DOMContentLoaded", () => {
-    // Memaksa hapus cache lama agar tulisan 'undefined' hilang total
-    localStorage.clear(); 
+    localStorage.clear(); // Bersihkan sisa data 'undefined' lama
 
     fetch('data.json')
         .then(response => response.json())
         .then(masterData => {
+            allGamesData = masterData.masterGames;
+            
+            // Render menu klik provider & data awal
             renderProviderSlider(masterData.masterGames);
             processAutomatedData(masterData);
+            
+            // Jalankan banner slideshow ultra-wide
             initBannerSlider();
         })
         .catch(error => console.error("Gagal memuat master data:", error));
 });
 
-// 1. RENDER PROVIDER SLIDER
+// 1. LOGIC RENDER PROVIDER DENGAN LOGO + EVENT KLIK FILTER GACOR
 function renderProviderSlider(games) {
     const track = document.getElementById('provider-track');
     const uniqueProviders = [...new Set(games.map(g => g.provider))];
     
-    let trackContent = '';
+    // Mapping URL Logo Official Provider biar gampang dicerna visualnya
+    const providerLogos = {
+        "Pragmatic Play": "https://www.vhv.rs/dpng/d/423-4237801_pragmatic-play-2018-logo-hd-png-download.png",
+        "PG Soft": "https://img.viva88athenae.com/pg-w.png",
+        "Habanero": "https://img.viva88athenae.com/hb-w.png",
+        "Joker Gaming": "https://img.viva88athenae.com/jg-w.png"
+    };
+
+    let trackContent = `
+        <div onclick="filterByProvider('ALL', this)" class="provider-btn inline-flex items-center space-x-2 bg-blue-600/20 border-2 border-blue-500 py-1.5 px-4 rounded-xl text-center font-bold text-xs text-blue-400 cursor-pointer transition select-none">
+            <span>✨ ALL GAMES</span>
+        </div>
+    `;
+
     uniqueProviders.forEach(provider => {
+        // Cari logo, jika tidak terdaftar pakai text backup standar
+        const logoUrl = providerLogos[provider] || "https://placehold.co/80x30/1e1e1e/3b82f6?text=" + provider;
+        
         trackContent += `
-            <div class="inline-block min-w-[130px] bg-[#1e1e1e] py-2.5 px-4 rounded-xl border border-gray-800 text-center font-bold text-xs text-blue-400 tracking-wide">
-                ${provider.toUpperCase()}
+            <div onclick="filterByProvider('${provider}', this)" class="provider-btn inline-flex items-center space-x-2 bg-[#1e1e1e] border border-gray-800 py-1.5 px-4 rounded-xl text-center font-bold text-xs text-gray-400 hover:text-blue-400 hover:border-gray-700 cursor-pointer transition select-none">
+                <img src="${logoUrl}" alt="${provider}" class="h-4 object-contain max-w-[70px]" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <span class="hidden text-[11px]">${provider.toUpperCase()}</span>
             </div>
         `;
     });
-    track.innerHTML = trackContent + trackContent;
+    
+    // Satukan ke track slider
+    track.innerHTML = trackContent;
 }
 
-// 2. PROSES AUTOMATED DATA
+// Fungsi Eksekusi ketika Logo Provider di-klik
+function filterByProvider(providerName, element) {
+    activeProviderFilter = providerName;
+    
+    // Ubah highlight border tombol aktif
+    document.querySelectorAll('.provider-btn').forEach(btn => {
+        btn.classList.remove('border-blue-500', 'bg-blue-600/20', 'text-blue-400');
+        btn.classList.add('border-gray-800', 'bg-[#1e1e1e]', 'text-gray-400');
+    });
+    element.classList.remove('border-gray-800', 'bg-[#1e1e1e]', 'text-gray-400');
+    element.classList.add('border-blue-500', 'bg-blue-600/20', 'text-blue-400');
+
+    // Ambil data game lokal yang sudah memiliki live RTP hasil generate
+    const savedGames = JSON.parse(localStorage.getItem('lawastoto_games')) || [];
+    
+    if (providerName === 'ALL') {
+        renderGames(savedGames);
+    } else {
+        const filtered = savedGames.filter(g => g.provider === providerName);
+        renderGames(filtered);
+    }
+}
+
+// 2. MANAGEMENT LIVE DATA GENERATOR
 function processAutomatedData(masterData) {
     const now = new Date().getTime();
     
@@ -53,7 +105,6 @@ function processAutomatedData(masterData) {
         };
     });
 
-    // MEMBUAT DATA TANGGAL DAN JAM LIVE YANG VALID
     const freshJackpots = [];
     const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
     
@@ -76,18 +127,19 @@ function processAutomatedData(masterData) {
         });
     }
 
+    localStorage.setItem('lawastoto_games', JSON.stringify(freshGames));
     renderJackpots(freshJackpots);
-    renderGames(freshGames);
+    renderGames(freshGames); 
 }
 
-// 3. RENDER LIVE JACKPOT (FIXED IMAGE & UNDEFINED)
+// 3. RENDER LIVE JP LIST
 function renderJackpots(jackpots) {
     const container = document.getElementById('jackpot-container');
     container.innerHTML = '';
     
     jackpots.forEach(jp => {
         const item = document.createElement('div');
-        item.className = "bg-[#1f1f1f] p-2.5 rounded-xl flex items-center justify-between border border-gray-800/80 shadow-md";
+        item.className = "bg-[#1f1f1f] p-2.5 rounded-xl flex items-center justify-between border border-gray-800/80";
         item.innerHTML = `
             <div class="flex items-center space-x-3 min-w-0">
                 <img src="${jp.image}" onerror="this.src='https://placehold.co/150'" class="w-12 h-12 object-cover rounded-xl border border-gray-700 flex-shrink-0">
@@ -106,10 +158,15 @@ function renderJackpots(jackpots) {
     });
 }
 
-// 4. RENDER GRID GAME
+// 4. RENDER GRID GAME SLOT BOX (SQUARE ANTI-POTONG BORDER)
 function renderGames(games) {
     const container = document.getElementById('game-container');
     container.innerHTML = '';
+
+    if (games.length === 0) {
+        container.innerHTML = `<p class="col-span-2 text-center text-xs text-gray-500 py-8">Belum ada game dari provider ini.</p>`;
+        return;
+    }
 
     games.forEach(game => {
         const polaHtml = game.pola.map(p => `
@@ -152,15 +209,67 @@ function renderGames(games) {
     });
 }
 
+// 5. MANUAL & AUTOMATIC INTERACTIVE SLIDER (PERSIS BANNER MADETOTO)
 function initBannerSlider() {
     const slides = document.querySelectorAll('#banner-slider .slide');
+    const dotsContainer = document.getElementById('slide-dots');
     if (slides.length === 0) return;
-    let currentSlide = 0;
-    setInterval(() => {
-        slides[currentSlide].classList.remove('opacity-100');
-        slides[currentSlide].classList.add('opacity-0');
-        currentSlide = (currentSlide + 1) % slides.length;
-        slides[currentSlide].classList.remove('opacity-0');
-        slides[currentSlide].classList.add('opacity-100');
-    }, 4000);
+
+    // Buat indikator titik bulat di bawah banner
+    dotsContainer.innerHTML = '';
+    slides.forEach((_, idx) => {
+        const dot = document.createElement('div');
+        dot.className = `w-1.5 h-1.5 rounded-full transition-all duration-300 ${idx === 0 ? 'bg-white w-3' : 'bg-white/40'}`;
+        dot.setAttribute('onclick', `goToSlide(${idx})`);
+        dot.style.cursor = 'pointer';
+        dotsContainer.appendChild(dot);
+    });
+
+    startAutoSlide();
+}
+
+function updateSlideVisibility() {
+    const slides = document.querySelectorAll('#banner-slider .slide');
+    const dots = document.querySelectorAll('#slide-dots div');
+    
+    slides.forEach((slide, idx) => {
+        if (idx === currentSlideIndex) {
+            slide.classList.remove('opacity-0');
+            slide.classList.add('opacity-100');
+            if(dots[idx]) {
+                dots[idx].classList.remove('bg-white/40', 'w-1.5');
+                dots[idx].classList.add('bg-white', 'w-3');
+            }
+        } else {
+            slide.classList.remove('opacity-100');
+            slide.classList.add('opacity-0');
+            if(dots[idx]) {
+                dots[idx].classList.remove('bg-white', 'w-3');
+                dots[idx].classList.add('bg-white/40', 'w-1.5');
+            }
+        }
+    });
+}
+
+function changeSlide(direction) {
+    const slides = document.querySelectorAll('#banner-slider .slide');
+    clearInterval(slideInterval);
+    currentSlideIndex = (currentSlideIndex + direction + slides.length) % slides.length;
+    updateSlideVisibility();
+    startAutoSlide();
+}
+
+function goToSlide(index) {
+    clearInterval(slideInterval);
+    currentSlideIndex = index;
+    updateSlideVisibility();
+    startAutoSlide();
+}
+
+function startAutoSlide() {
+    const slides = document.querySelectorAll('#banner-slider .slide');
+    slideInterval = setInterval(() => {
+        currentSlideIndex = (currentSlideIndex + 1) % slides.length;
+        updateSlideVisibility();
+    }, 5000); 
 }
