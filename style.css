@@ -30,10 +30,21 @@
     -ms-overflow-style: none;
     scrollbar-width: none;
 }
-/* Animasi Infinite Scroll Bergerak Otomatis Ke Samping */
-@keyframes scroll {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
+/* Styling Slider Track Provider */
+#provider-track {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Menyembunyikan scrollbar bawaan browser biar tetap aesthetic rapi */
+#provider-track::-webkit-scrollbar {
+    display: none;
+}
+#provider-track {
+    -ms-overflow-style: none;  
+    scrollbar-width: none;  
 }
 
 .animate-scroll {
